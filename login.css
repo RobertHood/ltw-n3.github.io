@@ -2,8 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    caret-color: transparent;
 }
 
+a{
+    text-decoration: none;
+}
 body{
     display: flex;
     justify-content: center;
@@ -15,7 +19,7 @@ body{
     padding-top: 20px;
     padding-right: 40px;
     padding-left: 40px;
-    width: 420px;
+    width: 500px;
     background-color: gray;
     color: #fff;
     box-shadow:0 0 5px rgba(0, 0, 0, .1);
@@ -89,21 +93,31 @@ body{
     text-align: center;
 }
 .loginbox .other-signin-button{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
 }
 
 .other-signin-button{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    cursor: none;
 }
 
 .other-signin-button .riot-button{
-    width: 20%;
+    width: 18%;
     height: auto;
+    border-radius: 10px;
+    margin: -6px 4px 3px 0px;
 }
 .other-signin-button .reddit-button{
     margin-bottom: -20px;
-    width: 33%;
+    width: 30%;
+}
+.other-signin-button .twitch-button{
+    width: 30%;
+    margin: -20px;
+}
+.other-signin-button .facebook-button{
+    width: 30%;
+    margin: -20px -30px -20px -1px;
 }

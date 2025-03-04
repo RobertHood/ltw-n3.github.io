@@ -61,3 +61,10 @@ img{
     color: red;
     font-size: 18px;
 }
+
+.btn.btn-outline-danger{
+    background-color: red;
+    border-radius: 40px;
+    color: white;
+    margin-top: 2px;
+}

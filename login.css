@@ -3,13 +3,17 @@
     padding: 0;
     box-sizing: border-box;
     caret-color: transparent;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto';
+    
 }
 
 a{
     text-decoration: none;
 }
 body{
+    background-image: url(asset/signin-bg.png);
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +25,9 @@ body{
     padding-right: 40px;
     padding-left: 40px;
     width: 500px;
-    background-color: gray;
+    background-color: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(5px);
     color: #fff;
     box-shadow:0 0 5px rgba(0, 0, 0, .1);
     border-radius: 40px;
@@ -46,6 +52,18 @@ body{
     color: #fff;
     padding: 20px 45px 20px 20px;
 }
+
+::-ms-reveal{
+    filter:invert(100%);
+}
+
+.inputbox .username:focus{
+    outline: none;
+}
+.inputbox .password:focus{
+    outline: none;
+}
+
 .inputbox .password{
     margin-top: 20px;
 }
@@ -73,14 +91,14 @@ body{
 .login-button{
     width: 100%;
     height: 45px;
-    background:  #fff;
+    background:  red;
     border:none;
     outline: none;
     border-radius: 40px;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #fff;
     font-weight: 600;
 }
 
@@ -90,39 +108,25 @@ body{
     margin-top: 20px;
     margin-bottom: 10px;
 }
+.loginbox .no-account-register:hover{
+    text-decoration: underline;
+    color: white;
+}
 .loginbox .other-signin-label{
     text-align: center;
 }
-.loginbox .other-signin-button{
-    padding: 0px 20px 20px 20px;
-}
-
-.other-signin-button{
-    display: flex;
-<<<<<<< Updated upstream
-    justify-content: space-between;
-    align-items: center;
-    cursor: none;
-}
-
-.other-signin-button .riot-button{
-    width: 18%;
-    height: auto;
-    border-radius: 10px;
-    margin: -6px 4px 3px 0px;
-=======
-    justify-content: center;
-    
-}
-
-.other-signin-button .riot-button{
->>>>>>> Stashed changes
-}
-.other-signin-button .reddit-button{
-    
-}
-.other-signin-button .twitch-button{
- 
-}
 .other-signin-button .facebook-button{
+    width: 60px;
+    height: 60px;
+}
+.other-signin-button {
+    padding: 5px 5px 5px 5px;
+    margin: 0;
+}
+.other-signin-button-block{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
 }

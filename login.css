@@ -142,36 +142,8 @@ body{
     text-align: center;
 }
 .loginbox .other-signin-label{
-<<<<<<< Updated upstream
     margin: 20px;
     
-=======
-    text-align: center;
-}
-.loginbox .other-signin-button{
-    padding: 0px 20px 20px 20px;
-}
-
-.other-signin-button{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-}
-
-.other-signin-button .riot-button{
-    width: 18%;  
-    border-radius: 10px;
-    margin: -6px 4px 3px 0px;
-}
-.other-signin-button .reddit-button{
-    margin-bottom: -20px;
-    width: 30%;
-}
-.other-signin-button .twitch-button{
-    width: 30%;
-    margin: -20px;
->>>>>>> Stashed changes
 }
 .other-signin-button .facebook-button{
     width: 60px;
@@ -293,5 +265,4 @@ body{
     pointer-events: all;
     transition: transform 1s ease-in-out, opacity 1s ease-in-out; 
 }
-
 

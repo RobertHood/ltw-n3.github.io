@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    caret-color: transparent;
+    box-sizing: border-box;
+}
+
+body, html{
+    overflow-x: hidden;
+}
+
+main{
+    background-color: black;
+}
+
+body{
+    background-color: black;
+}
+
+img{
+    vertical-align: middle;
+}
+
+.btn.btn-outline-danger{
+    background-color: red;
+    border-radius: 40px;
+    color: white;
+    padding-top: 10px auto;
+}

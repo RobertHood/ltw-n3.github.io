@@ -14,6 +14,7 @@
     color:white;
 }
 
+
 .league-page-top {
     position: relative; 
     min-height: 40vh; 
@@ -67,11 +68,35 @@ body h5{
 .scuttle-news{
     background: linear-gradient(to right, #101a1e, #1c2b30);
     color: white;
+=======
+.league-page-top{
+    background-color: black;
+    color: white;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 40vh;
+}
+
+.league-page-top h1{
+    font-weight: bold;
+    font-size: 64px;
+}
+.league-page-top p{
+    font-size: 20px;
+}
+
+h2{
+    display: block;
+    padding: 20px 20px 0px 60px;
+
 }
 
 .subtext{
     padding-left: 60px;
 }
+
 
 .news-box-equal-row{
     display: grid;
@@ -247,3 +272,21 @@ footer{
 
 
 
+=======
+.scuttle-news{
+    
+}
+.scuttle-news h2{
+    padding-top: 60px;
+}
+
+.news-box{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding-left:60px;
+}
+
+.news-section{
+    background-color: gray;
+}

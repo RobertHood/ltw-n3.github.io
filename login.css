@@ -11,7 +11,7 @@ a{
     text-decoration: none;
 }
 body{
-    background-image: url(asset/signin-bg.png);
+    background-image: url(asset/homepage-assets/signin-bg.png);
     background-size: cover;
     background-position: center;
     display: flex;

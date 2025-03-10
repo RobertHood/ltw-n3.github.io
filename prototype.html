@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Biểu đồ nhiều đường (Multi-Line Chart)</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+
+    .chart-container {
+      width: 700px;
+      max-width: 100%;
+      margin: auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+<body>
+
+<div class="chart-container">
+  <canvas id="multiLineChart"></canvas>
+</div>
+
+<script>
+  const ctx = document.getElementById('multiLineChart').getContext('2d');
+
+  const multiLineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+      datasets: [
+        {
+          label: 'Doanh thu Online',
+          data: [12, 15, 20, 18, 24, 28],
+          borderColor: '#36a2eb',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: 'Doanh thu Offline',
+          data: [10, 12, 18, 20, 25, 26],
+          borderColor: '#ff6384',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: 'Doanh thu Khác',
+          data: [5, 7, 10, 9, 12, 15],
+          borderColor: '#4bc0c0',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          tension: 0.3,
+          fill: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Triệu đồng'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'Tháng'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

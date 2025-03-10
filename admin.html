@@ -12,29 +12,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="asset/page-favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="admin.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
 <body>
+    <input type="checkbox" id="nav-toggle"> 
     <div class="side-bar">
         <div class="sidebar-logo">
-            <a class="nav-bar letter-logo"><img src="asset/image.png" style="width: 170px"></a>
+            <a class="nav-bar letter-logo"><img id="logo-img" src="asset\homepage-assets\image.png" style="width: 170px"></a>
         </div>
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="#" class="active"><i class="ri-dashboard-2-fill"></i>News Management</a>
+                    <a href="#" class="active"><i class="ri-dashboard-2-fill"></i><span>News Management</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="ri-image-ai-fill"></i>Media Libary</a>
+                    <a href=""><i class="ri-image-ai-fill"></i><span>Media Libary</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="ri-group-fill"></i>User Management</a>
+                    <a href=""><i class="ri-group-fill"></i><span>User Management</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="ri-question-answer-fill"></i>Chat Management</a>
+                    <a href=""><i class="ri-question-answer-fill"></i><span>Chat Management</span></a>
                 </li>
                 <li>
-                    <a href=""><i class="ri-line-chart-fill"></i>Analytics </a>
+                    <a href=""><i class="ri-line-chart-fill"></i><span>Analytics</span> </a>
                 </li>
             </ul>
         </div>
@@ -43,7 +46,7 @@
     <div class="main-content">
         <header>
             <h2>
-                <label>
+                <label for="nav-toggle">
                     <i class="ri-menu-line"></i>
                 </label>
 
@@ -54,7 +57,7 @@
                 <input type="search" placeholder="Search here..."> 
             </div>
             <div class="user-box">
-                <img src="asset\dinhvanbeo.jpg" width="45px" height="45px" alt="">
+                <img src="asset\homepage-assets\dinhvanbeo.jpg" width="45px" height="45px" alt="">
                 <div>
                     <h4>Lil Kimmy</h4>
                     <small>4:3 ADMIN</small>
@@ -98,6 +101,14 @@
                     <div>
                         <i class="ri-news-fill"></i>
                     </div>
+                </div>
+            </div>
+            <div class="chart-stats">
+                <div class="line-chart-1">
+                    <canvas id="newChart"></canvas>
+                </div>
+                <div class="admin-stats">
+
                 </div>
             </div>
         </main>

@@ -19,6 +19,7 @@ a{
     top: 0;
     background: #0c0b0a;
     z-index: 100;
+    transition: margin-left .5s ease-in-out;
 }
 
 .sidebar-logo{
@@ -55,7 +56,37 @@ a{
     padding-right: 1rem;
 }
 
+#nav-toggle:checked + .side-bar .sidebar-logo img {
+    width: 50px !important;
+    border-radius: 50%;
+    
+}
+
+#nav-toggle:checked + .side-bar{
+    width: 80px;
+}
+
+#nav-toggle:checked + .side-bar .sidebar-logo h2,
+#nav-toggle:checked + .side-bar li a{
+    padding-left: 1rem;
+}
+
+#nav-toggle:checked + .side-bar .sidebar-logo h2 i:last-child,
+#nav-toggle:checked + .side-bar li a span:last-child{
+    display: none;
+}
+
+#nav-toggle:checked ~ .main-content{
+    margin-left: 70px;
+}
+
+#nav-toggle:checked ~ .main-content header{
+    width: calc(100% - 70px);
+    left: 80px;
+}
+
 .main-content{
+    transition: margin-left .5s ease;
     margin-left: 345px;
 }
 
@@ -69,6 +100,12 @@ header{
     width: calc(100% - 345px);
     top: 0;
     z-index: 100;
+    background: #fff;
+    transition: left .5s ease;
+}
+
+#nav-toggle{
+    display: none;
 }
 
 header h2{
@@ -138,16 +175,33 @@ main{
 .single-card{
     display: flex;
     justify-content: space-between;
-    background: #fff;
+    background: #E5E5E5;
     padding: 2rem;
     border-radius: 2px;
 }
 
 .single-card i{
-    color: lightgray;
+    color: black;
+    font-size: 3rem;
 }
 
 .single-card span{
-    font-size: 3rem;
-    color: lightgray;
+    color: gray;
 }
+
+.chart-stats{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line-chart-1{
+    width: 700px;
+    max-width: 100%;
+    margin: auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+

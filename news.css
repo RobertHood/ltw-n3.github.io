@@ -25,6 +25,14 @@ img{
     vertical-align: middle;
 }
 
+/*
+fffffffff
+fffffffffffffff
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+fffffffffffffff
+fffffffffffff
+fffffffffff
+*/
 
 .btn.btn-outline-danger{
     background-color: red;
@@ -33,6 +41,11 @@ img{
     padding-top: 10px auto;
 }
 
+/* .container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: top;
+} */
 .body-container{
     max-width: 1200px;
     margin-left: auto;
@@ -42,6 +55,7 @@ img{
     display: grid;
     grid-template-columns: 800px 1fr;
     grid-template-rows: auto 1fr;
+    /* grid-template-rows: auto; */
 }
 
 .news, .sidebar{
@@ -272,6 +286,15 @@ img{
 .date{
     font-size: 0.8em;
 }
+
+/*
+fffffffff
+fffffffffffffff
+fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+fffffffffffffff
+fffffffffffff
+fffffffffff
+*/
 
 footer{
     background-color: black;

@@ -105,6 +105,13 @@ img{
     padding: 10px;
 }
 
+.news-title{
+    font-weight:bold;
+}
+.news-category-and-time{
+    color: gray;
+}
+
 .news-sc-1{
     display: grid;
     grid-template-columns: 1fr 1fr;

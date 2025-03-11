@@ -127,9 +127,14 @@ body h5{
 }
 
 .featured-news {
+    display:flex;
+    align-items: flex-end;
+    padding-bottom: 50px;
     min-height: 100%;
+    background-color: black;
     background-image: url(asset/league-assets/first-stand-pic.jpg);
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
     object-fit: contain;
     color: white;
     font-size: 18px;
@@ -138,9 +143,9 @@ body h5{
 
 .featured-news .featured-content
 {   
-    transform: translateY(500%);
+    max-height: -100vh;
     position: relative;
-    align-items: center;
+    
     text-align: left;
     width: 100%;
     padding-left: 30px;

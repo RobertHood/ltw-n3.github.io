@@ -4,9 +4,13 @@ function changeToRegister(){
     
     document.getElementById("login-box").classList.add("slide-over-right-to-left-to-fade");
     document.getElementById("login-box").classList.remove("slide-over-left-to-right-to-appear");
+    document.getElementById("login-box").classList.add("bring-to-back");
+    document.getElementById("login-box").classList.remove("bring-to-front");
 
     document.getElementById("register-box").classList.add("slide-over-right-to-left-to-appear");
     document.getElementById("register-box").classList.remove("slide-over-left-to-right-to-fade");
+    document.getElementById("register-box").classList.add("bring-to-front");
+    document.getElementById("register-box").classList.remove("bring-to-back");
 
     
 }
@@ -17,9 +21,13 @@ function changeToLogIn(){
     
     document.getElementById("login-box").classList.add("slide-over-left-to-right-to-appear");
     document.getElementById("login-box").classList.remove("slide-over-right-to-left-to-fade");
+    document.getElementById("login-box").classList.add("bring-to-front");
+    document.getElementById("login-box").classList.remove("bring-to-back");
 
     document.getElementById("register-box").classList.remove("slide-over-right-to-left-to-appear");
     document.getElementById("register-box").classList.add("slide-over-left-to-right-to-fade");
+    document.getElementById("register-box").classList.add("bring-to-back");
+    document.getElementById("register-box").classList.remove("bring-to-front");
     
 }
 

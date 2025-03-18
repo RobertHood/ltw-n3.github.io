@@ -1,0 +1,47 @@
+<div class="container p-4">
+    <h2 class="mb-4">User Management</h2>
+  
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" id="searchUser" placeholder="Search by name or email...">
+      <button class="btn btn-primary" id="btnSearch">Search</button>
+    </div>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTable">
+          <tr>
+            <td>1</td>
+            <td>Nguyen Van A</td>
+            <td>vana@example.com</td>
+            <td>Admin</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td>
+              <button class="btn btn-sm btn-warning">Edit</button>
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Tran Thi B</td>
+            <td>thib@example.com</td>
+            <td>User</td>
+            <td><span class="badge bg-secondary">Inactive</span></td>
+            <td>
+              <button class="btn btn-sm btn-warning">Edit</button>
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

@@ -290,6 +290,10 @@ footer{
     height: 500px;
 }
 
+.carousel-item:hover{
+    cursor: pointer;
+}
+
 .carousel-headline{
     height: 10vh;
     display: flex;

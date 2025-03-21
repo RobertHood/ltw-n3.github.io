@@ -18,6 +18,10 @@
     text-decoration: underline;
 }
 
+.nav-bar.letter-logo img:hover{
+    cursor: pointer;
+}
+
 .league-page-top {
     position: relative; 
     min-height: 40vh; 

@@ -32,6 +32,46 @@ img{
     padding-top: 10px auto;
 }
 
+.nav-home{
+    display: none;
+    color: white;
+    padding-right: 10px;
+}
+
+.ri-menu-fill{
+    width: 34px;
+    height: 34px;
+}
+
+@media (max-width: 1023px) {
+    .nav-bar.letter-logo img{
+        max-width: 100px;
+    }
+
+    .navbar.navbar-expand-sm.navbar-dark{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .nav-home{
+        display: block;
+    }
+
+    .navbar-nav.ms-auto{
+        display: none;
+    }
+
+    .nav-item.dropdown.no-margin{
+        display: none;
+    }
+
+    .nav-item{
+        display: none;
+    }
+}
+
 .sc-1{
     width: 100vw;
     height: 100vh;

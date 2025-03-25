@@ -158,10 +158,11 @@ img{
 .sc-1{
     width: 100vw;
     height: 100vh;
-    background-image: url('../asset/homepage-assets/homepage-bg.png');
+    /* background-image: url('../asset/homepage-assets/homepage-bg.png');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background: linear-gradient(to right, #cc0000, #ff3366);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,12 +235,12 @@ img{
 
 @media (max-width: 1024px) {
     .sc-1-text h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         width: 100%;
     }
 
     .sc-1-text p {
-        font-size: 1rem;
+        font-size: 2rem;
         width: 100%;
     }
 
@@ -254,12 +255,12 @@ img{
 
 @media (max-width: 768px) {
     .sc-1-text h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         width: 100%;
     }
 
     .sc-1-text p {
-        font-size: 1rem;
+        font-size: 1.5rem;
         width: 100%;
     }
 
@@ -278,12 +279,12 @@ img{
 
 @media (max-width: 480px) {
     .sc-1-text h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
         width: 100%;
     }
 
     .sc-1-text p {
-        font-size: 0.9rem;
+        font-size: 1.4rem;
         width: 100%;
     }
 

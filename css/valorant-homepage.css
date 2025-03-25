@@ -138,11 +138,10 @@ body h5{
     align-items: flex-end;
     min-height: 100%;
     background-color: black;
-    background-image: url(asset/league-assets/first-stand-pic.jpg);
+    background-image: url(../asset/league-assets/first-stand-pic.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    object-fit:cover;
-    object-position: center;
+    object-fit: contain;
     color: white;
     font-size: 18px;
     border-radius: 5px;
@@ -160,28 +159,19 @@ body h5{
 
 .news-row .right{
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%; 
 }
 
-.news-row .left{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    width: 100%;  
-}
 
 .news-box {
     display: flex;
     flex-direction: row;
     background: transparent;
     border-radius: 5px;
-    padding-bottom: 10px;
+    gap: 20px;
     align-items: center;
-    gap: 10px;
     flex: 1 1 auto; 
     min-width: 435px;
 }

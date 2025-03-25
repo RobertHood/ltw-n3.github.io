@@ -158,7 +158,7 @@ img{
 .sc-1{
     width: 100vw;
     height: 100vh;
-    background-image: url('asset/homepage-assets/homepage-bg.png');
+    background-image: url('../asset/homepage-assets/homepage-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

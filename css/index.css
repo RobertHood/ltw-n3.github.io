@@ -588,46 +588,49 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    margin-top: 100px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    gap: 20px;
     color:black;
     background-color: white;
-    min-height: 500px;
+    width: 100%;
+    max-width: 1600px;
 }
 
 .authors-wrds{
-    padding: 10px 70px;
+    flex: 1;
+    padding: 10px 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     font-size: large;
-}
-
-.authors-img{
-    display: flex;
+    align-items: center;
 }
 
 .about-authors img{
-    width: 1000px;
-    height: 500px;
+    flex: 1; 
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
 }
 
 @media (max-width: 1024px) {
     .about-authors {
+        display: flex;
         flex-direction: column;
-        align-items: center;
         text-align: center;
         gap: 20px;
-        padding: 20px;
+        width: 100%;
     }
 
     .authors-wrds {
-        padding: 10px 40px;
+        padding: 10px 10px;
         font-size: medium;
     }
 
     .authors-img img {
-        width: 80%;
+        width: 100%;
         height: auto;
     }
 }
@@ -637,6 +640,7 @@ footer{
         flex-direction: column;
         text-align: center;
         padding: 10px;
+        width: 100%;
     }
 
     .authors-wrds {
@@ -645,7 +649,7 @@ footer{
     }
 
     .authors-img img {
-        width: 100% ;
+        width: 100%;
         height: auto;
     }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "ltw-n3.github.io",
+  "version": "1.0.0",
+  "description": "Web thông tin các môn thể thao điện tử của Riot Games\r Link google docs: https://docs.google.com/document/d/1_u30DfQlBn8EzxZjQbvJoJFlokVbzMSTKvcSs2gcZPI/edit?usp=sharing",
+  "main": "admin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertHood/ltw-n3.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertHood/ltw-n3.github.io/issues"
+  },
+  "homepage": "https://github.com/RobertHood/ltw-n3.github.io#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

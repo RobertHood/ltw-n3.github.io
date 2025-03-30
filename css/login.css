@@ -332,11 +332,9 @@ body{
     .other-signin-label{
         margin: 10px;
     }
-
     .other-signin-button-block ul{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: -2px;
     }
-
 }

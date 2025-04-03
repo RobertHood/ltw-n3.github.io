@@ -11,6 +11,6 @@ bcrypt.genSalt(10, (err, salt) => {
   bcrypt.hash(password, salt, (err, hash) => {
     if (err) throw err;
 
-    console.log('Hashed password:', hash);
+    console.log('Hashed password:', hash); //console.log ra mật khẩu bị băm r copy vào field password trong từng document một
   });
 });

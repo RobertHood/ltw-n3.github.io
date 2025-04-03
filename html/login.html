@@ -3,6 +3,38 @@
 <head>
     <link rel="stylesheet" href="../css/login.css">
     <script src="../script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("login-form").addEventListener("submit", async function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+    
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+    
+                try {
+                    const response = await fetch("/users/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({ username: username, password: password }),
+                    });
+    
+                    if (response.ok) {
+                        const result = await response.text();
+                        alert(result); // Show success message
+                        window.location.href = "../index.html"; // Redirect to the homepage
+                    } else {
+                        const error = await response.text();
+                        alert(`Login failed: ${error}`);
+                    }
+                } catch (err) {
+                    console.error("Error:", err);
+                    alert("An error occurred while logging in.");
+                }
+            });
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
@@ -12,17 +44,17 @@
     <div class="container">
         <div id= "login-box" class="form-box loginbox">
             <h2>Sign In</h2>
-                <form>
-                <!--input field-->
-                <div class="inputbox">
-                    <input class="username" name="signin" placeholder="Username" required>
-                    <input type="password" class="password" name="signin" placeholder="Password" required>
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a class="forgot-password" href="forgot-password.html">Forgot password?</a>
-                </div>
-                <button class="btn login-button" onclick="window.location.href='../index.html'">Login</button>
+                <form id="login-form">
+               
+                    <div class="inputbox">
+                        <input id="username" class="username" name="signin" placeholder="Username" required>
+                        <input id="password" type="password" class="password" name="signin" placeholder="Password" required>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a class="forgot-password" href="forgot-password.html">Forgot password?</a>
+                    </div>
+                    <button class="btn login-button" type="submit">Login</button>
                 
                 <div class="other-signin-label">
                     <label>or you can sign in with</label>

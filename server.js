@@ -20,7 +20,7 @@ let usersCollection;
 async function connectDB() {
   try {
     await client.connect();
-    const db = client.db("Ritogg"); // Change "userDB" to your desired database name
+    const db = client.db("Ritogg"); 
     usersCollection = db.collection("User");
     console.log("Connected to MongoDB!");
   } catch (err) {
@@ -33,23 +33,26 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 
 // Sign up a user
-app.post("/users", async (req, res) => {
-  try {
-    const { name, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const existingUser = await usersCollection.findOne({ name });
-    if (existingUser) {
-      return res.status(400).send("User already exists");
+app.post("/users/register", async (req, res) => {
+    try {
+      const { username, email, password } = req.body;
+      const hashedPassword = await bcrypt.hash(password, 10);
+  
+      const existingUser = await usersCollection.findOne({
+          $or: [{ username: username }, { email: email }]
+      });
+      
+      if (existingUser) {
+        return res.status(400).send("User already exists" + existingUser.username + " " + existingUser.email);
+      }
+  
+      await usersCollection.insertOne({ username, email, password: hashedPassword });
+      res.status(201).send("User registered successfully!");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Error registering user");
     }
-
-    await usersCollection.insertOne({ name, password: hashedPassword });
-    res.status(201).send("User registered successfully!");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error registering user");
-  }
-});
+  });
 
 // Log in a user
 app.post("/users/login", async (req, res) => {

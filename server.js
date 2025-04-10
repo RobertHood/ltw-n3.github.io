@@ -1,98 +1,69 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const bcrypt = require("bcrypt");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 
-const app = express();
-const uri = "mongodb+srv://robbie1:Boybuster_03@cluster0.gdyalco.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const { authenticateToken, authorizeRole } = require("./middleware/authMiddleware");
 
-const client = new MongoClient(uri, {
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+let usersCollection;
+
+// MongoDB client setup
+const client = new MongoClient(process.env.MONGO_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
 });
 
-let usersCollection;
+// Middleware
+app.use(express.json());
+app.use(express.static(path.join(__dirname)));
 
-// Connect to MongoDB
-async function connectDB() {
+// Connect to MongoDB and start server
+async function startServer() {
   try {
     await client.connect();
-    const db = client.db("Ritogg"); 
+    const db = client.db("Ritogg");
     usersCollection = db.collection("User");
-    console.log("Connected to MongoDB!");
+    console.log("✅ Connected to MongoDB");
+
+    // Load routes
+    const authRoutes = require("./routes/authentication")(usersCollection);
+    app.use("/users", authRoutes);
+
+    // Protected route: Admin only
+    app.get("/users", authenticateToken, authorizeRole("admin"), async (req, res) => {
+      try {
+        const users = await usersCollection.find({}, { projection: { password: 0 } }).toArray();
+        res.json(users);
+      } catch (err) {
+        console.error(err);
+        res.status(500).send("Error fetching users");
+      }
+    });
+
+    // Profile route for any logged-in user
+    app.get("/profile", authenticateToken, (req, res) => {
+      res.json({ message: `Welcome ${req.user.username}`, role: req.user.role });
+    });
+
+    // Serve main page
+    app.get("/", (req, res) => {
+      res.sendFile(path.join(__dirname, "index.html"));
+    });
+
+    // Start server
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running at http://localhost:${PORT}`);
+    });
+
   } catch (err) {
-    console.error("MongoDB connection error:", err);
+    console.error("❌ MongoDB connection error:", err);
   }
 }
-connectDB();
 
-app.use(express.static(path.join(__dirname)));
-app.use(express.json());
-
-// Sign up a user
-app.post("/users/register", async (req, res) => {
-    try {
-      const { username, email, password } = req.body;
-      const hashedPassword = await bcrypt.hash(password, 10);
-  
-      const existingUser = await usersCollection.findOne({
-          $or: [{ username: username }, { email: email }]
-      });
-      
-      if (existingUser) {
-        return res.status(400).send("User already exists" + existingUser.username + " " + existingUser.email);
-      }
-  
-      await usersCollection.insertOne({ username, email, password: hashedPassword });
-      res.status(201).send("User registered successfully!");
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Error registering user");
-    }
-  });
-
-// Log in a user
-app.post("/users/login", async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await usersCollection.findOne({ username });
-
-    if (!user) {
-      return res.status(400).send("User not found");
-    }
-
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (passwordMatch) {
-      res.send("Success");
-    } else {
-      res.status(401).send("Not Allowed");
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error logging in");
-  }
-});
-
-// Fetch all users (for testing)
-app.get("/users", async (req, res) => {
-  try {
-    const users = await usersCollection.find().toArray();
-    res.json(users);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error fetching users");
-  }
-});
-
-// Serve the index.html file
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
-// Server listening on port 3000
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
-});
+startServer();

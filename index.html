@@ -205,6 +205,29 @@
             <p>&copy; 2025 E22PTITCLC02. All rights reserved</p>
           </div>
         </div>
-      </footer>   
+      </footer>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginBtn = document.getElementById("header-login-btn");
+            const adminBtn = document.getElementById("signin-btn");
+    
+            const token = localStorage.getItem("token");
+            const role = localStorage.getItem("role");
+    
+            if (!token) {
+                // Chưa đăng nhập
+                loginBtn.style.display ="inline-block";
+                adminBtn.style.display = "none";
+            } else if (role === "admin") {
+                // Đăng nhập là admin
+                loginBtn.style.display = "none";
+                adminBtn.style.display = "";
+            } else if (role === "user") {
+                // Đăng nhập là user
+                loginBtn.style.display = "none";
+                adminBtn.style.display = "none";
+            }
+        });
+    </script>       
 </body>
 </html>   

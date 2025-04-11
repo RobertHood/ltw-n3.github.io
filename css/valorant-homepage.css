@@ -8,7 +8,9 @@
     caret-color: transparent;
     box-sizing: border-box;
 }
-
+body{
+    padding-top: 80px;
+}
 .nav-item button{
     border-radius: 40px;
     background-color: red;

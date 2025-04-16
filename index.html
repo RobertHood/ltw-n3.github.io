@@ -15,9 +15,13 @@
 </head>
 <body>
     <div class="navigation">
-      <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #0b0b0b;">
+      <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
           <a class="nav-bar letter-logo"><img src="asset/homepage-assets/image.png" style="width: 170px"></a>
+          <form class="d-flex ms-3" role="search" onsubmit="handleSearch(event)">
+            <input class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search" id="nav-search-input">
+            <button class="btn btn-outline-light" type="submit"><i class="ri-search-line"></i></button>
+          </form>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" href="/html/lol-homepage.html">League of Legends</a>
@@ -41,8 +45,10 @@
               </ul>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-danger" id="signin-btn" onclick="window.location.href='../html/login.html'">Sign In</button>
-              <button class="btn btn-outline-danger" id="signin-btn" onclick="window.location.href='admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='../html/login.html'">Sign In</button>
+              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
+
             </li>
         </div>
         <label for="nav-mobile-input" class="nav-home">
@@ -75,8 +81,9 @@
               </ul>
             </li>
             <li class="nav-mobile-item">
-              <button class="btn btn-outline-danger" id="signin-btn" onclick="window.location.href='login.html'">Sign In</button>
-              <button class="btn btn-outline-danger" id="signin-btn" onclick="window.location.href='admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='../html/login.html'">Sign In</button>
+              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
             </li>
           </ul>
         </nav>
@@ -159,13 +166,13 @@
         <div id="newsCarousel" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="3000">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="asset/homepage-assets/lol1.webp" class="d-block w-100" alt="Ảnh 1" onclick="window.location.href='lol-homepage.html'">
+              <img src="asset/homepage-assets/lol1.webp" class="d-block w-100" alt="Ảnh 1" onclick="window.location.href='html/lol-homepage.html'">
             </div>
             <div class="carousel-item">
-              <img src="asset/homepage-assets/val1.jpg" class="d-block w-100" alt="Ảnh 2" onclick="window.location.href='valorant-homepage.html'">
+              <img src="asset/homepage-assets/val1.jpg" class="d-block w-100" alt="Ảnh 2" onclick="window.location.href='html/valorant-homepage.html'">
             </div>
             <div class="carousel-item">
-              <img src="asset/homepage-assets/tft1.png" class="d-block w-100" alt="Ảnh 3" onclick="window.location.href='tft-homepage.html'">
+              <img src="asset/homepage-assets/tft1.png" class="d-block w-100" alt="Ảnh 3" onclick="window.location.href='html/tft-homepage.html'">
             </div>
           </div>
         </div>
@@ -205,6 +212,52 @@
             <p>&copy; 2025 E22PTITCLC02. All rights reserved</p>
           </div>
         </div>
-      </footer>   
+      </footer>
+      <script>
+            const loginBtn = document.getElementById("login-btn");
+            const adminBtn = document.getElementById("admin-btn");
+            const logoutBtn = document.getElementById("logout-btn");
+
+            const token = localStorage.getItem("token");
+            const role = localStorage.getItem("role");
+        document.addEventListener("DOMContentLoaded", () => {
+    
+            if (!token) {
+                // Chưa đăng nhập
+                loginBtn.style.display ="";
+                adminBtn.style.display = "none";
+                logoutBtn.style.display = "none";
+            } else if (role === "admin") {
+                // Đăng nhập là admin
+                loginBtn.style.display = "none";
+                adminBtn.style.display = "";
+                logoutBtn.style.display = "";
+            } else if (role === "user") {
+                // Đăng nhập là user
+                loginBtn.style.display = "none";
+                adminBtn.style.display = "none";
+                logoutBtn.style.display = "";
+            }
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', function () {
+          // Optional: send to backend (if it does any cleanup)
+          fetch('/logout', {
+            method: 'POST',
+            credentials: 'include' // or 'same-origin' if using cookies
+          }).catch(error => {
+            console.error('Logout API call failed:', error);
+          });
+        
+          
+          localStorage.removeItem('token');
+          localStorage.removeItem('role');
+          
+          
+          loginBtn.style.display ="";
+          adminBtn.style.display = "none";
+          logoutBtn.style.display = "none";
+        });
+    </script>       
 </body>
 </html>   

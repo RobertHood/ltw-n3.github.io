@@ -62,4 +62,11 @@ exports.acceptCodeSchema = Joi.object({
         tlds: { allow: ['com', 'net', 'org'] }
     }),
     providedCode: Joi.number().required()
-    });
+});
+
+exports.changePasswordSchema = Joi.object({
+    newPassword: Joi.string().min(8).required()
+    .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')),
+    oldPassword: Joi.string().min(8).required()
+    .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')),
+})

@@ -70,3 +70,13 @@ exports.changePasswordSchema = Joi.object({
     oldPassword: Joi.string().min(8).required()
     .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')),
 })
+
+exports.acceptFPCodeSchema = Joi.object({
+    email: Joi.string().min(10).email({
+        minDomainSegments: 2,
+        tlds: { allow: ['com', 'net', 'org'] }
+    }),
+    providedCode: Joi.number().required(),
+    newPassword: Joi.string().min(8).required()
+    .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')),
+});

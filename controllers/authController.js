@@ -250,8 +250,109 @@ exports.changePassword = async(req, res) =>{
         await existingUser.save();
         return res
             .status(200)
-            .json({success : false, message: 'Password updated!!'});
+            .json({success : true, message: 'Password updated!!'});
     } catch (error) {
         console.log(error);
     }
 }
+
+exports.sendForgotPasswordCode = async (req, res) => {
+    const {email} = req.body;
+    try {
+        const existingUser = await User.findOne({ email });
+        if (!existingUser) {
+            return res.status(404).json({
+                status: "fail",
+                message: "User does not exist"
+            });
+        }
+
+
+        const codeValue = Math.floor(100000 + Math.random() * 900000).toString();
+
+        let info = await transport.sendMail({
+            from: process.env.NODE_CODE_SENDING_EMAIL_ADDRESS,
+            to: existingUser.email,
+            subject: "Forgot Password Code",
+            text: `Your password reset code is ${codeValue}`,
+    });
+
+        if(info.accepted[0] === existingUser.email) {
+            const hashedCodeValue = hmacProcess(codeValue, process.env.HASHING_KEY);
+            existingUser.forgotPasswordCode = hashedCodeValue;
+            existingUser.forgotPasswordCodeValidation = Date.now() + 10 * 60 * 1000; // 10 minutes
+            await existingUser.save();
+            return res.status(200).json({
+                status: "success",
+                message: "Forgot Password code sent successfully",
+                sentCode: `${codeValue}`
+            });
+        }
+        res.status(400).json({
+            status: "fail",
+            message: "Code sent failed",
+        });
+    }catch (error) {
+        console.error(error);
+    }
+};
+
+exports.verifyForgotPasswordCode = async (req, res) => {
+	const { email, providedCode, newPassword } = req.body;
+	try {
+		const { error, value } = acceptCodeSchema.validate({ email, providedCode });
+		if (error) {
+			return res
+				.status(401)
+				.json({ success: false, message: error.details[0].message });
+		}
+
+		const codeValue = providedCode.toString();
+		const existingUser = await User.findOne({ email }).select(
+			'+forgotPasswordCode +forgotPasswordCodeValidation'
+		);
+
+		if (!existingUser) {
+			return res
+				.status(401)
+				.json({ success: false, message: 'User does not exists!' });
+		}
+	
+
+		if (
+			!existingUser.forgotPasswordCode ||
+			!existingUser.forgotPasswordCodeValidation
+		) {
+			return res
+				.status(400)
+				.json({ success: false, message: 'something is wrong with the code!' });
+		}
+
+		if (Date.now() - existingUser.forgotPasswordCodeValidation > 5 * 60 * 1000) {
+			return res
+				.status(400)
+				.json({ success: false, message: 'code has been expired!' });
+		}
+
+		const hashedCodeValue = hmacProcess(
+			codeValue,
+			process.env.HASHING_KEY
+		);
+
+		if (hashedCodeValue === existingUser.forgotPasswordCode) {
+			const hashedPassword = await doHash(newPassword,12);
+            existingUser.password = hashedPassword;
+			existingUser.forgotPasswordCode = undefined;
+			existingUser.forgotPasswordCodeValidation = undefined;
+			await existingUser.save();
+			return res
+				.status(200)
+				.json({ success: true, message: 'Password updated' });
+		}
+		return res
+			.status(400)
+			.json({ success: false, message: 'unexpected occured!!' });
+	} catch (error) {
+		console.log(error);
+	}
+};

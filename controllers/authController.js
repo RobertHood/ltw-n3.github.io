@@ -6,6 +6,7 @@ const { acceptCodeSchema } = require("../middlewares/validator");
 const User = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 const transport = require("../middlewares/sendMail");
+const { required } = require("joi");
 
 exports.register = async (req, res) => {
     const { email, password } = req.body;
@@ -64,7 +65,7 @@ exports.login = async (req, res) => {
         if (!existingUser) {
             return res.status(400).json({
                 status: "fail",
-                message: "User already exists"
+                message: "User does not exists"
             });
         }
         
@@ -229,8 +230,8 @@ exports.changePassword = async(req, res) =>{
 		}
         if(!verified){
             return res
-                .status(401)
-                .json({success : false, message: 'You are not verified user'});
+                .status(400)
+                .json({status : "fail", message: 'You are not verified user'});
         }
         const existingUser = await User.findOne({_id:userID}).select('+password');
         if (!existingUser) {

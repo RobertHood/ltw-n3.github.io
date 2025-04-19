@@ -13,7 +13,7 @@ const postSchema = mongoose.Schema({
         trim: true,
         minlength: [20, "Description must be at least 20 characters"],
     },
-    userId: {
+    userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, "Author ID is required"],

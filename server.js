@@ -1,69 +1,41 @@
-require("dotenv").config();
-const express = require("express");
-const path = require("path");
-const { MongoClient, ServerApiVersion } = require("mongodb");
-
-const { authenticateToken, authorizeRole } = require("./middleware/authMiddleware");
-
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const path = require('path');
 
-let usersCollection;
 
-// MongoDB client setup
-const client = new MongoClient(process.env.MONGO_URI, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
+const authRouter = require('./routers/authRouter');
+const postsRouter = require('./routers/postsRouter');
+
+app.use(cors());
+app.use(express.json());
+app.use(helmet());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    console.log('MongoDB connected successfully!');
+}
+).catch((err) => {
+    console.error('MongoDB connection error:', err);
+}
+);
+
+
+app.use('/api/auth', authRouter);
+app.use('/api/posts', postsRouter);
+
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Middleware
-app.use(express.json());
-app.use(express.static(path.join(__dirname)));
-
-// Connect to MongoDB and start server
-async function startServer() {
-  try {
-    await client.connect();
-    const db = client.db("Ritogg");
-    usersCollection = db.collection("User");
-    console.log("✅ Connected to MongoDB");
-
-    // Load routes
-    const authRoutes = require("./routes/authentication")(usersCollection);
-    app.use("/users", authRoutes);
-
-    // Protected route: Admin only
-    app.get("/users", authenticateToken, authorizeRole("admin"), async (req, res) => {
-      try {
-        const users = await usersCollection.find({}, { projection: { password: 0 } }).toArray();
-        res.json(users);
-      } catch (err) {
-        console.error(err);
-        res.status(500).send("Error fetching users");
-      }
-    });
-
-    // Profile route for any logged-in user
-    app.get("/profile", authenticateToken, (req, res) => {
-      res.json({ message: `Welcome ${req.user.username}`, role: req.user.role });
-    });
-
-    // Serve main page
-    app.get("/", (req, res) => {
-      res.sendFile(path.join(__dirname, "index.html"));
-    });
-
-    // Start server
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running at http://localhost:${PORT}`);
-    });
-
-  } catch (err) {
-    console.error("❌ MongoDB connection error:", err);
-  }
-}
-
-startServer();
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});

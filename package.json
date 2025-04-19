@@ -2,9 +2,10 @@
   "name": "ltw-n3.github.io",
   "version": "1.0.0",
   "description": "Web thông tin các môn thể thao điện tử của Riot Games\r Link google docs: https://docs.google.com/document/d/1_u30DfQlBn8EzxZjQbvJoJFlokVbzMSTKvcSs2gcZPI/edit?usp=sharing",
-  "main": "admin.js",
+  "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node --env-file=.env server.js",
+    "dev" : "node --watch --trace-warnings --env-file=.env server.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,14 @@
   },
   "homepage": "https://github.com/RobertHood/ltw-n3.github.io#readme",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.15.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
+    "mongoose": "^8.13.2",
+    "nodemailer": "^6.10.1"
   }
 }

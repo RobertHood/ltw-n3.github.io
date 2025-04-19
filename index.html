@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="frontend/css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="icon" href="frontend/asset/homepage-assets/page-favicon.png" type="image/x-icon">
+    <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
     <title>Rito.gg</title>
 </head>
 <body>
     <div class="navigation">
       <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
-          <a class="nav-bar letter-logo"><img src="frontend/asset/homepage-assets/image.png" style="width: 170px"></a>
+          <a class="nav-bar letter-logo"><img src="/asset/homepage-assets/image.png" style="width: 170px"></a>
           <form class="d-flex ms-3" role="search" onsubmit="handleSearch(event)">
             <input class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search" id="nav-search-input">
             <button class="btn btn-outline-light" type="submit"><i class="ri-search-line"></i></button>
           </form>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="frontend/html/lol-homepage.html">League of Legends</a>
+              <a class="nav-link active" href="/html/lol-homepage.html">League of Legends</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="frontend/html/valorant-homepage.html">VALORANT</a>
+              <a class="nav-link active" href="/html/valorant-homepage.html">VALORANT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="frontend/html/tft-homepage.html">Teamfight Tactics</a>
+              <a class="nav-link active" href="/html/tft-homepage.html">Teamfight Tactics</a>
             </li>
           </ul>
           <ul class="navbar-nav">
             <li class="nav-item dropdown no-margin">
               <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://flagsapi.com/GB/flat/64.png" alt="English" width="30" height="30"> English
+                <img src="/asset/homepage-assets/england.webp" alt="English" width="30" height="30"> English
               </a>
               <ul class="dropdown-menu" aria-labelledby="language-dropdown">
                 <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/VN/flat/64.png" alt="VietNamese" width="20" height="20"> Vietnamese</a></li>
@@ -45,8 +45,8 @@
               </ul>
             </li>
             <li class="nav-item">
-              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='frontend/html/login.html'">Sign In</button>
-              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='frontend/html/admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='/html/login.html'">Sign In</button>
+              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='/html/admin.html'">(dev)to admin</button>
               <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
             </li>
         </div>
@@ -61,13 +61,13 @@
           </label>
           <ul class="mobile-list">
             <li class="nav-mobile-item">
-              <a class="nav-link active" href="frontend/html/lol-homepage.html">League of Legends</a>
+              <a class="nav-link active" href="/html/lol-homepage.html">League of Legends</a>
             </li>
             <li class="nav-mobile-item">
-              <a class="nav-link active" href="frontend/html/valorant-homepage.html">VALORANT</a>
+              <a class="nav-link active" href="/html/valorant-homepage.html">VALORANT</a>
             </li>
             <li class="nav-mobile-item">
-              <a class="nav-link active" href="frontend/html/tft-homepage.html">Teamfight Tactics</a>
+              <a class="nav-link active" href="/html/tft-homepage.html">Teamfight Tactics</a>
             </li>
             <li class="nav-mobile-item dropdown no-margin">
               <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,8 +80,8 @@
               </ul>
             </li>
             <li class="nav-mobile-item">
-              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='frontend/html/login.html'">Sign In</button>
-              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='frontend/html/admin.html'">(dev)to admin</button>
+              <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='/html/login.html'">Sign In</button>
+              <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='/html/admin.html'">(dev)to admin</button>
               <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
             </li>
           </ul>
@@ -106,55 +106,55 @@
         <div class="news-sc-1">
           <div class="news-1">
             <div class="author">
-              <img src="frontend/asset/homepage-assets\dinhvanbeo.jpg">
+              <img src="/asset/homepage-assets\dinhvanbeo.jpg">
               <div class="author-in4">
                 <p class="author-name">Đinh Văn Béo</p>
                 <p>Author</p>
               </div>
             </div>
             <div class="content-1">
-              <h2 class="news-title"><a href="..frontend/html/news.html">T1 vs G2. Absolute cinema. Enough said</a></h2>
+              <h2 class="news-title"><a href="../html/news.html">T1 vs G2. Absolute cinema. Enough said</a></h2>
               <p class="news-category-and-time">VALORANT | 6 minutes read</p>
-              <img src="frontend/asset/homepage-assets/meteor-t1vsg2.png" alt="">
+              <img src="/asset/homepage-assets/meteor-t1vsg2.png" alt="">
             </div>
           </div>
           <div class="news-2">
             <div class="news-2-container">
               <div class="news-2-context">
-                <p class="news-title"><a href="frontend/html/news.html">LEC Winter Split 2025 crowns its champion</a></p>
+                <p class="news-title"><a href="/html/news.html">LEC Winter Split 2025 crowns its champion</a></p>
                 <p class="news-2-desc">G2 and KC fights for first seed going into First Stand. However, Europe witnessed a murder as the battle was not even close.</p>
                 <p class="news-category-and-time">LOL | 10 minutes read</p>
               </div>
-              <img src="frontend/asset/homepage-assets/g2kc03.png" alt="">
+              <img src="/asset/homepage-assets/g2kc03.png" alt="">
             </div>
             <div class="news-2">
               <div class="news-2-container">
                 <div class="news-2-context">
-                  <p class="news-title"><a href="frontend/html/news.html">Is k3soju washed?</a></p>
+                  <p class="news-title"><a href="/html/news.html">Is k3soju washed?</a></p>
                   <p class="news-2-desc">The TFT community once again ask the big fat question of the year as our favorite TFT influencer did not make it to Tactician's Cup for the second time this year.</p>
                   <p class="news-category-and-time">TFT | 10 minutes read</p>
                 </div>
-                <img src="https://i.ytimg.com/vi/0EjsYyH98Z0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCrqESsHm_uFdNOAvxvoOoK2frXTg" alt="">
+                <img src="/asset/homepage-assets/k3soju.webp" alt="">
               </div>
             </div>
             <div class="news-2">
               <div class="news-2-container">
                 <div class="news-2-context">
-                  <p class="news-title"><a href="frontend/html/news.html">League of Legends is getting kinda boring in 2025?</a></p>
+                  <p class="news-title"><a href="/html/news.html">League of Legends is getting kinda boring in 2025?</a></p>
                   <p class="news-2-desc">Many of League community are finding that the game is cooked and Riot are being called out to really look into fixing it</p>
                   <p class="news-category-and-time">LOL | 10 minutes read</p>
                 </div>
-                <img src="frontend/asset/homepage-assets/amidisabled.png" alt="">
+                <img src="/asset/homepage-assets/amidisabled.png" alt="">
               </div>
             </div>
             <div class="news-2">
               <div class="news-2-container">
                 <div class="news-2-context">
-                  <p class="news-title"><a href="frontend/html/news.html">Paper Rex signs PatMen</a></p>
+                  <p class="news-title"><a href="/html/news.html">Paper Rex signs PatMen</a></p>
                   <p class="news-2-desc">Paper Rex has announced the signing of former NAOS player Patrick "PatMen" Mendoza. The signing is the organization's first roster move involving a player since Monyet left in May of 2024.</p>
                   <p class="news-category-and-time">VALORANT | 10 minutes read</p>
                 </div>
-                <img src="https://pbs.twimg.com/media/GlL7sBwaEAAuylX?format=jpg&name=large" alt="">
+                <img src="/asset/homepage-assets/patmen.webp" alt="">
               </div>
             </div>
           </div>
@@ -165,13 +165,13 @@
         <div id="newsCarousel" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="3000">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="frontend/asset/homepage-assets/lol1.webp" class="d-block w-100" alt="Ảnh 1" onclick="window.location.href='frontend/html/lol-homepage.html'">
+              <img src="/asset/homepage-assets/lol1.webp" class="d-block w-100" alt="Ảnh 1" onclick="window.location.href='/html/lol-homepage.html'">
             </div>
             <div class="carousel-item">
-              <img src="frontend/asset/homepage-assets/val1.jpg" class="d-block w-100" alt="Ảnh 2" onclick="window.location.href='frontend/html/valorant-homepage.html'">
+              <img src="/asset/homepage-assets/val1.jpg" class="d-block w-100" alt="Ảnh 2" onclick="window.location.href='/html/valorant-homepage.html'">
             </div>
             <div class="carousel-item">
-              <img src="frontend/asset/homepage-assets/tft1.png" class="d-block w-100" alt="Ảnh 3" onclick="window.location.href='frontend/html/tft-homepage.html'">
+              <img src="/asset/homepage-assets/tft1.png" class="d-block w-100" alt="Ảnh 3" onclick="window.location.href='/html/tft-homepage.html'">
             </div>
           </div>
         </div>
@@ -179,16 +179,16 @@
           <div class="authors-wrds">
             <b><h1>About Us</h1></b>
             <p>The four young men in the photo aren’t just friends sharing drinks—they're a passionate and creative web development team. From lively conversations over cold beers, they came up with an idea and joined forces to build a unique website—one that blends technology, user experience, and the spirit of friendship.</p>
-            <p>Each brings a different strength to the table: one is a frontend expert, another dives deep into backend systems, one perfects every pixel of the UI/UX, and the last bridges the gap between tech and user needs. They don’t just divide tasks—they share late-night debugging sessions, race against deadlines, and celebrate together when their first product goes live.</p>
+            <p>Each brings a different strength to the table: one is a  expert, another dives deep into backend systems, one perfects every pixel of the UI/UX, and the last bridges the gap between tech and user needs. They don’t just divide tasks—they share late-night debugging sessions, race against deadlines, and celebrate together when their first product goes live.</p>
           </div>
-          <img src="frontend/asset/homepage-assets\author.jpg" alt="4 thằng ngu ngồi uống bia">
+          <img src="/asset/homepage-assets\author.jpg" alt="4 thằng ngu ngồi uống bia">
         </div>
       </main>
       <footer>
         <div class="container">
           <div class="upper-bar">
             <div class = "footer-content-1">
-              <a class="footer-logo"><img src="frontend/asset/homepage-assets/image.png" style="width: 170px"></a>
+              <a class="footer-logo"><img src="/asset/homepage-assets/image.png" style="width: 170px"></a>
             </div>
             <ul class = "footer-content-list">
               <li><a href="#">HOME</a></li>
@@ -196,7 +196,7 @@
               <li><a href="#">TERMS OF SERVICE</a></li>
               <li><a href="#">USER SUPPORT</a></li>
               <li><a href="#">ABOUT US</a></li>
-              <li><a href="frontend/html/supportus.html">SUPPORT US</a></li>
+              <li><a href="/html/supportus.html">SUPPORT US</a></li>
             </ul>
             <ul class="footer-social-icon-list">
               <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>

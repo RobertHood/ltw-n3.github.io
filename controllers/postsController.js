@@ -17,7 +17,7 @@ exports.getPosts = async (req, res) => {
 			.skip(pageNum * postsPerPage)
 			.limit(postsPerPage)
 			.populate({
-				path: 'userId',
+				path: 'userID',
 				select: 'email',
 			});
 		res.status(200).json({ success: true, message: 'posts', data: result });
@@ -31,7 +31,7 @@ exports.singlePost = async (req, res) => {
 
 	try {
 		const existingPost = await Post.findOne({ _id }).populate({
-			path: 'userId',
+			path: 'userID',
 			select: 'email',
 		});
 		if (!existingPost) {
@@ -49,23 +49,23 @@ exports.singlePost = async (req, res) => {
 
 exports.createPost = async (req, res) => {
 	const { title, description } = req.body;
-	const { userId } = req.user;
+	const { userID } = req.user;
 	try {
 		const { error, value } = createPostSchema.validate({
 			title,
 			description,
-			userId,
+			userID,
 		});
 		if (error) {
 			return res
 				.status(401)
-				.json({ success: false, message: error.details[0].message });
+				.json({ success: false, message: error.details[0].message, title, description, });
 		}
 
 		const result = await Post.create({
 			title,
 			description,
-			userId,
+			userID
 		});
 		res.status(201).json({ success: true, message: 'created', data: result });
 	} catch (error) {
@@ -76,13 +76,14 @@ exports.createPost = async (req, res) => {
 exports.updatePost = async (req, res) => {
 	const { _id } = req.query;
 	const { title, description } = req.body;
-	const { userId } = req.user;
+	const { userID } = req.user;
 	try {
 		const { error, value } = createPostSchema.validate({
 			title,
 			description,
-			userId,
+			userID,
 		});
+		console.log(_id,title, description, userID);
 		if (error) {
 			return res
 				.status(401)
@@ -94,7 +95,7 @@ exports.updatePost = async (req, res) => {
 				.status(404)
 				.json({ success: false, message: 'Post unavailable' });
 		}
-		if (existingPost.userId.toString() !== userId) {
+		if (existingPost.userID.toString() !== userID) {
 			return res.status(403).json({ success: false, message: 'Unauthorized' });
 		}
 		existingPost.title = title;
@@ -109,17 +110,12 @@ exports.updatePost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
 	const { _id } = req.query;
-
-	const { userId } = req.user;
 	try {
 		const existingPost = await Post.findOne({ _id });
 		if (!existingPost) {
 			return res
 				.status(404)
 				.json({ success: false, message: 'Post already unavailable' });
-		}
-		if (existingPost.userId.toString() !== userId) {
-			return res.status(403).json({ success: false, message: 'Unauthorized' });
 		}
 
 		await Post.deleteOne({ _id });

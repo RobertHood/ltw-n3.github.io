@@ -6,7 +6,7 @@ const { acceptCodeSchema } = require("../middlewares/validator");
 const User = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 const transport = require("../middlewares/sendMail");
-const { required } = require("joi");
+
 
 exports.register = async (req, res) => {
     const { email, password } = req.body;
@@ -92,7 +92,7 @@ exports.login = async (req, res) => {
         }).json({
             status: "success",
             message: "User logged in successfully",
-            token,
+            token
         });
     }catch(error) {
         console.error(error);

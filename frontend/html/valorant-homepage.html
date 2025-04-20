@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
-            <a class="nav-bar letter-logo"><img src="../asset/homepage-assets/image.png" style="width: 170px" onclick="window.location.href='../../index.html'"></a>
+            <a href="../../" class="nav-bar letter-logo"><img src="../asset/homepage-assets/image.png" style="width: 170px"></a>
             <form class="d-flex ms-3" role="search" onsubmit="handleSearch(event)">
                 <input class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search" id="nav-search-input">
                 <button class="btn btn-outline-light" type="submit"><i class="ri-search-line"></i></button>
@@ -41,8 +41,8 @@
               </ul>
             </li>
             <li class="nav-item">
-                <button class="btn btn-outline-danger" id="login-btn" onclick="window.location.href='../html/login.html'">Sign In</button>
-                <button class="btn btn-outline-danger" id="admin-btn" onclick="window.location.href='../admin.html'">(dev)to admin</button>
+                <a href="/html/login.html"><button class="btn btn-outline-danger" id="login-btn">Sign In</button></a>
+                <a href="/html/admin.html"><button class="btn btn-outline-danger" id="admin-btn" >(dev)to admin</button></a>
                 <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
             </li>
           </ul>

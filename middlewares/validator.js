@@ -80,3 +80,9 @@ exports.acceptFPCodeSchema = Joi.object({
     newPassword: Joi.string().min(8).required()
     .pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$')),
 });
+
+exports.createPostSchema = Joi.object({
+	title: Joi.string().min(3).max(60).required(),
+	description: Joi.string().min(3).max(600).required(),
+	userID: Joi.string().required(),
+});

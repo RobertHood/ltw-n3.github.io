@@ -30,8 +30,6 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 
-
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });

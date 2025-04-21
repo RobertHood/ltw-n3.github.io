@@ -141,3 +141,56 @@ exports.createPostWithImage = async (req, res) => {
 	await newPost.save();
 	res.status(201).json({ message: 'Post created', post: newPost });
 };
+
+exports.getPostsByUser = async (req, res) => {
+}
+
+exports.getPostsByCategory = async (req, res) => {
+	const { category } = req.query;
+	try {
+		const result = await Post.find({ category }).populate({
+			path: 'userID',
+			select: 'email',
+		});
+		if (!result) {
+			return res.status(404).json({ success: false, message: 'No posts' });
+		}
+		res.status(200).json({ success: true, message: 'posts', data: result });
+	}
+	catch (error) {
+		console.log(error);
+	}
+}
+exports.getPostsByUser = async (req, res) => {
+	const { userID } = req.query;
+	try {
+		const result = await Post.find({ userID }).populate({
+			path: 'userID',
+			select: 'email',
+		});
+		if (!result || result.length === 0) {
+			return res.status(404).json({ success: false, message: 'No posts' });
+		}
+		res.status(200).json({ success: true, message: 'posts by', data: result });
+	}
+	catch (error) {
+		console.log(error);
+	}
+}
+
+exports.getPostsByTitle = async (req, res) => {
+	const { title } = req.query;
+	try {
+		const result = await Post.find({ title: { $regex: title, $options: 'i' } }).populate({
+			path: 'userID',
+			select: 'email',
+		});
+		if (!result) {
+			return res.status(404).json({ success: false, message: 'No posts' });
+		}
+		res.status(200).json({ success: true, message: 'posts', data: result });
+	}
+	catch (error) {
+		console.log(error);
+	}
+}	

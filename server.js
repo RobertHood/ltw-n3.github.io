@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 
-
+const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');
 const postsRouter = require('./routers/postsRouter');
 const commentsRouter = require('./routers/commentsRouter'); 
@@ -15,7 +15,7 @@ const commentsRouter = require('./routers/commentsRouter');
 const mediaRouter = require('./routers/mediaRouter');
 
 const dashboardRoutes = require('./routers/dashboardRouter');
-app.use('/api/media', mediaRouter);
+
 
 app.use(cors());
 app.use(express.json());
@@ -37,10 +37,11 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 );
 
 app.use('/api/dashboard', dashboardRoutes);
-
+app.use('/api/media', mediaRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
-app.use('/api/comments', commentsRouter);  
+app.use('/api/comments', commentsRouter);
+app.use('/api/users', userRouter);  
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));

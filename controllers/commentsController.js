@@ -20,7 +20,7 @@ exports.loadComments = async(req, res) =>{
         path: 'postID',
         select: 'title',
       });
-      res.status(200).json({success:true, message: "Comments loaded"})
+      res.status(200).json({success:true, message: "Comments loaded", result});
   } catch(error){
     console.log(error)
   } 

@@ -124,3 +124,20 @@ exports.deletePost = async (req, res) => {
 		console.log(error);
 	}
 };
+
+exports.createPostWithImage = async (req, res) => {
+	const { title, content, author } = req.body;
+	const imageUrl = req.file
+	  ? `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`
+	  : null;
+  
+	const newPost = new Post({
+	  title,
+	  content,
+	  author,
+	  image: imageUrl
+	});
+  
+	await newPost.save();
+	res.status(201).json({ message: 'Post created', post: newPost });
+};

@@ -11,6 +11,10 @@ const authRouter = require('./routers/authRouter');
 const postsRouter = require('./routers/postsRouter');
 const commentsRouter = require('./routers/commentsRouter'); 
 
+// Các router
+const mediaRouter = require('./routers/mediaRouter');
+app.use('/api/media', mediaRouter);
+
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
@@ -18,6 +22,9 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'frontend')));
+
+// Cho phép truy cập ảnh trực tiếp
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log('MongoDB connected successfully!');

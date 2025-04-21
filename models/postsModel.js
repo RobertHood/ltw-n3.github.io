@@ -13,6 +13,10 @@ const postSchema = mongoose.Schema({
         trim: true,
         minlength: [20, "Description must be at least 20 characters"],
     },
+    image: {
+        type: String, // Lưu URL ảnh, ví dụ: http://localhost:3000/uploads/post-1234.jpg
+        required: false, // Không bắt buộc
+    },
     userID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

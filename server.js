@@ -13,6 +13,8 @@ const commentsRouter = require('./routers/commentsRouter');
 
 // Các router
 const mediaRouter = require('./routers/mediaRouter');
+
+const dashboardRoutes = require('./routers/dashboardRouter');
 app.use('/api/media', mediaRouter);
 
 app.use(cors());
@@ -34,6 +36,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 }
 );
 
+app.use('/api/dashboard', dashboardRoutes);
 
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);

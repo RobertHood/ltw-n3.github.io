@@ -1,10 +1,9 @@
 const commentsModels = require('../models/commentsModels');
 const Comment = require('../models/commentsModels');
 
-exports.loadComments = async(req, res) =>{
+exports.loadAllComments = async(req, res) =>{
   const { cmt } = req.query;
   const cmtsPerPost = 5;
-
   try{
     let cmtNum = 0;
     if(cmt <= 1){
@@ -25,10 +24,26 @@ exports.loadComments = async(req, res) =>{
     console.log(error)
   } 
 }
+
+exports.loadCommentsinPost = async(req, res) =>{
+  const { postID } = req.query;
+  try{
+    const result = await Comment.find({postID})
+      .sort({createdAt: -1})
+      if(!result){
+        return res
+          .status(404)
+          .json({success: false, message: "This post has no comment"})
+      }
+      res.status(200).json({success:true, message: "Comments in post loaded", result});
+  } catch(error){
+    console.log(error)
+  } 
+}
 //postID để test: 5f7a9b3c8d1e2f4a6b7890cd
 exports.publishComment = async (req, res) =>{
-  const{ anonName, content, date, postID } = req.body;  
-  // const {postID} = req.post;
+  const{ anonName, content } = req.body;  
+  const {postID} = req.post;
   try {
     const newComment = await Comment.create({
       anonName, content, date, postID
@@ -38,3 +53,17 @@ exports.publishComment = async (req, res) =>{
     console.log(error);
   }
 } 
+
+exports.deleteComments = async(req, res) =>{
+  const { _id } = req.query;
+  try {
+    const existingComment = await Comment.findOne({_id});
+    if(!existingComment){
+      return res.status(404).json({success: false, message: "Comment does not exist"})
+    }
+    await Comment.deleteOne({_id});
+    res.status(200).json({success: true, message: "Comment deleted"})
+  } catch (error) {
+    console.log(error)
+  }
+}

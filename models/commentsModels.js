@@ -1,3 +1,4 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const commentSchema = mongoose.Schema({
@@ -18,6 +19,11 @@ const commentSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
         required: [true, "PostID is required"]
+    },
+    userID:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: [true, "UserID is required"]
     }
 }, {
     timestamps: true

@@ -40,13 +40,12 @@ exports.loadCommentsinPost = async(req, res) =>{
     console.log(error)
   } 
 }
-//postID để test: 5f7a9b3c8d1e2f4a6b7890cd
+
 exports.publishComment = async (req, res) =>{
-  const{ anonName, content } = req.body;  
-  const {postID} = req.post;
+  const{ anonName, content, date, postID, userID} = req.body;  
   try {
     const newComment = await Comment.create({
-      anonName, content, date, postID
+      anonName, content, date, postID, userID
     });
     res.status(201).json({success: true, message: "Comment published", data: newComment})
   } catch (error) {

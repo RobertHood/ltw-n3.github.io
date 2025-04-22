@@ -16,6 +16,7 @@ const mediaRouter = require('./routers/mediaRouter');
 
 const dashboardRoutes = require('./routers/dashboardRouter');
 
+const esportsRouter = require('./routers/esportsRouter');
 
 app.use(cors());
 app.use(express.json());
@@ -41,7 +42,8 @@ app.use('/api/media', mediaRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/comments', commentsRouter);
-app.use('/api/users', userRouter);  
+app.use('/api/users', userRouter);
+app.use('/api/esports', esportsRouter);  
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));

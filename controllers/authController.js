@@ -356,3 +356,20 @@ exports.verifyForgotPasswordCode = async (req, res) => {
 		console.log(error);
 	}
 };
+
+exports.deleteUser = async (req, res) => {
+	const { _id } = req.body;
+	try {
+		const existingUser = await User.findOne({ _id});
+		if (!existingUser) {
+			return res
+				.status(404)
+				.json({ success: false, message: 'No user found' });
+		}
+
+		await User.deleteOne({ _id });
+		res.status(200).json({ success: true, message: 'deleted' });
+	} catch (error) {
+		console.log(error);
+	}
+};

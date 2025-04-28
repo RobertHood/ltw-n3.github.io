@@ -4,8 +4,8 @@
   "description": "Web thông tin các môn thể thao điện tử của Riot Games\r Link google docs: https://docs.google.com/document/d/1_u30DfQlBn8EzxZjQbvJoJFlokVbzMSTKvcSs2gcZPI/edit?usp=sharing",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node --env-file=.env server.js",
-    "dev": "node --watch --trace-warnings --env-file=.env server.js"
+    "start": "node --env-file=.gitignore server.js",
+    "dev": "node --watch --trace-warnings --env-file=.gitignore server.js"
   },
   "repository": {
     "type": "git",

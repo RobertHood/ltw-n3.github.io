@@ -1,7 +1,1 @@
-PORT=8000
-MONGO_URI=mongodb+srv://robbie1:Boybuster_03@cluster0.gdyalco.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-TOKEN_SECRET=secret
-NODE_CODE_SENDING_EMAIL_ADDRESS=tranxuanthanhpbe@gmail.com
-NODE_CODE_SENDING_EMAIL_PASSWORD=bsfygymmuhsmmiqx
-HASHING_KEY=secret
-PANDASCORE_API_KEY=_Mq3gH5j-8phfWomVGXPrilwX6HFvkS5lkMBnI7u8f0--CNibfk
+.env

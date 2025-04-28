@@ -10,8 +10,12 @@ const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');
 const postsRouter = require('./routers/postsRouter');
 const commentsRouter = require('./routers/commentsRouter'); 
+
+// Các router
 const mediaRouter = require('./routers/mediaRouter');
+
 const dashboardRoutes = require('./routers/dashboardRouter');
+
 const esportsRouter = require('./routers/esportsRouter');
 
 app.use(cors());

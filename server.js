@@ -5,6 +5,8 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config();
+const PORT = process.env.PORT;
 
 const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');
@@ -51,4 +53,5 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
+    console.log(`http://localhost:${PORT}`);
 });

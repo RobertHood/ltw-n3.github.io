@@ -47,6 +47,7 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/users', userRouter);
 app.use('/api/esports', esportsRouter);  
 
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });

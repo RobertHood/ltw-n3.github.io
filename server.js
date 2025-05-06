@@ -5,6 +5,8 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config();
+const PORT = process.env.PORT;
 
 const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');
@@ -45,10 +47,12 @@ app.use('/api/comments', commentsRouter);
 app.use('/api/users', userRouter);
 app.use('/api/esports', esportsRouter);  
 
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
+    console.log(`http://localhost:${PORT}`);
 });

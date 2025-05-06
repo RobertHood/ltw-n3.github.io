@@ -9,9 +9,10 @@ const transport = require("../middlewares/sendMail");
 
 
 exports.register = async (req, res) => {
-    const { email, password } = req.body;
+    const { username, email, password } = req.query;
     try {
         const {error, value} = registerSchema.validate({
+            username,
             email,
             password
         });
@@ -34,6 +35,7 @@ exports.register = async (req, res) => {
         const hashedPassword = await doHash(password,12);
 
         const newUser = new User({
+            username,
             email,
             password: hashedPassword,
         });

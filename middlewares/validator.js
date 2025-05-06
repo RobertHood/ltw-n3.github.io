@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 exports.registerSchema = Joi.object({
+    username: Joi.string().min(3),
     email: Joi.string().min(10).email({
         minDomainSegments: 2,
         tlds: { allow: ['com', 'net', 'org'] },

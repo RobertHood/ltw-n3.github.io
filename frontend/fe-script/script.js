@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("registerBtn").addEventListener("click", changeToRegister);
+    document.getElementById("loginBtn").addEventListener("click", changeToLogIn);
+    
+});
+
+
 function changeToRegister(){
     document.getElementById("change-to-register").classList.add("hidden");
     document.getElementById("change-to-login").classList.add("visible");
@@ -11,8 +18,6 @@ function changeToRegister(){
     document.getElementById("register-box").classList.remove("slide-over-left-to-right-to-fade");
     document.getElementById("register-box").classList.add("bring-to-front");
     document.getElementById("register-box").classList.remove("bring-to-back");
-
-    
 }
 
 function changeToLogIn(){

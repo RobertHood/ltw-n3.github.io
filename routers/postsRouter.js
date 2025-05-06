@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const postsController = require('../controllers/postsController');
 const { identifier } = require('../middlewares/identification');
 const router = express.Router();

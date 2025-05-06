@@ -10,7 +10,11 @@ const postSchema = mongoose.Schema({
     category: {
         type: String,
         required: [true, "Category is required"],
-        trim: true
+        trim: true,
+        enum: {
+            values: ["VALORANT", "League of Legends", "Teamfight Tactics"],
+            message: "{VALUE} is not a valid category",
+        },
     },
     description: {
         type: String,
@@ -19,8 +23,8 @@ const postSchema = mongoose.Schema({
         minlength: [20, "Description must be at least 20 characters"],
     },
     image: {
-        type: String, // Lưu URL ảnh, ví dụ: http://localhost:3000/uploads/post-1234.jpg
-        required: false, // Không bắt buộc
+        type: String, 
+        required: false, 
     },
     userID: {
         type: mongoose.Schema.Types.ObjectId,

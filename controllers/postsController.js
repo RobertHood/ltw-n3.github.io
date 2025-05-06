@@ -48,15 +48,17 @@ exports.singlePost = async (req, res) => {
 };
 
 exports.createPost = async (req, res) => {
-	const { title, description } = req.body;
+	const { title, description, category } = req.body;
 	const { userID } = req.user;
 	try {
 		const { error, value } = createPostSchema.validate({
 			title,
 			description,
+			category,
 			userID,
 		});
 		if (error) {
+			console.error(error);
 			return res
 				.status(401)
 				.json({ success: false, message: error.details[0].message, title, description, });
@@ -65,6 +67,7 @@ exports.createPost = async (req, res) => {
 		const result = await Post.create({
 			title,
 			description,
+			category,
 			userID
 		});
 		res.status(201).json({ success: true, message: 'created', data: result });

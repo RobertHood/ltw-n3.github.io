@@ -10,11 +10,7 @@ const postSchema = mongoose.Schema({
     category: {
         type: String,
         required: [true, "Category is required"],
-        trim: true,
-        enum: {
-            values: ["VALORANT", "League of Legends", "Teamfight Tactics"],
-            message: "{VALUE} is not a valid category",
-        },
+        trim: true
     },
     description: {
         type: String,

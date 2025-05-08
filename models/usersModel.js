@@ -20,6 +20,11 @@ const userSchema = mongoose.Schema({
         minlength: [6, "Password must be at least 6 characters"],
         select: false
     },
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
+    },
     verified:{
         type: Boolean,
         default: false

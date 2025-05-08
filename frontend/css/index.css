@@ -82,6 +82,12 @@ img{
     margin-top: 24px;
 }
 
+.user-info{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .nav-mobile-item{
     text-decoration: none;
     color: #fff;

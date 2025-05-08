@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
+    <script src="/fe-script/script.js"></script>
     <title>Welcome</title>
 </head>
 <body> 
     <div class="container">
         <div id= "login-box" class="form-box loginbox">
             <h2>Sign In</h2>
-                <form id="login-form" action="/api/auth/login" method="POST">
-                    <div class="inputbox">
+            <p id="error-message" class="error-message"></p>
+                <form id="login-form" class="login-form">
+                    <div class="inputbox">    
                         <input id="username" class="username" name="email" placeholder="Email" required>
                         <input id="password" type="password" class="password" name="password" placeholder="Password" required>
                     </div>
@@ -53,12 +55,13 @@
 
         <div id= "register-box" class="form-box register">
             <h2>Register</h2>
-                <form id="register-form" action="/api/auth/register" method="POST">
+                <form id="register-form">
+                    <p id="error-register" class="error-message"></p>
                 <!--input field-->
                 <div class="inputbox">
-                    <input id="usernameR" type="text" class="username" name="signin" placeholder="Username" required>
-                    <input id="emailR" type="text" class="email" name="signin" placeholder="Email" required>
-                    <input id="passwordR" type="password" class="password" name="signin" placeholder="Password" required>
+                    <input id="usernameR" type="text" class="username" name="usernameR" placeholder="Username" required>
+                    <input id="emailR" type="text" class="email" name="emailR" placeholder="Email" required>
+                    <input id="passwordR" type="password" class="password" name="passwordR" placeholder="Password" required>
                 </div> 
             
                 <button type="submit" class="btn register-button">Register</button>

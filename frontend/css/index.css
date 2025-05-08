@@ -84,7 +84,8 @@ img{
 
 .user-info{
     display:flex;
-    flex-direction: row;
+    flex-direction:row;
+    justify-content: center;
     align-items: center;
 }
 

@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     );
+
+    document.getElementById("frontpage").addEventListener("click", () => {
+        window.location.href = "/";
+    }
+    );
 });
 
 function getCookie(name) {

@@ -19,10 +19,8 @@
       <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
           <a class="nav-bar letter-logo"><img src="/asset/homepage-assets/image.png" style="width: 170px"></a>
-          <form class="d-flex ms-3" role="search" onsubmit="handleSearch(event)">
-            <input class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search" id="nav-search-input">
-            <button class="btn btn-outline-light" type="submit"><i class="ri-search-line"></i></button>
-          </form>
+          <input class="navbar-searchbar" type="search" placeholder="Search news..." aria-label="Search" id="search-bar">
+          
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" href="/html/lol-homepage.html">League of Legends</a>
@@ -101,8 +99,8 @@
             <h1>Welcome to RITO.GG – Your Ultimate Riot Games' News Hub!</h1>
             <p>Everything, everywhere about Riot Games and Riot Games Esports, all at once!</p>
             <p>Stay updated with the latest news, game updates, patch notes, and community highlights.</p>
-            <div class="search-box">
-              <input type="text" placeholder="Search...">
+            <div class="search-box"><!-- Search bar HEREEEEEEEEEEE-->
+              <input type="text" placeholder="Search..." id="big-search-bar">
               <i class="ri-search-eye-line"></i>
             </div>
           </div>

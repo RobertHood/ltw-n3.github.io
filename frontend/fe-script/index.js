@@ -43,6 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     );
+
+    document.getElementById("search-bar").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
+        }
+    });
+    document.getElementById("big-search-bar").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
+        }
+    });
+    
 });
 
 function getCookie(name) {

@@ -23,7 +23,21 @@ body{
 .nav-bar.letter-logo img:hover{
     cursor: pointer;
 }
-
+.navbar-searchbar
+{
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.navbar-searchbar::placeholder{
+    color: #666;
+    padding-left: 5px;
+}
+.navbar-searchbar:focus{
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}
 .league-page-top {
     position: relative; 
     min-height: 40vh; 

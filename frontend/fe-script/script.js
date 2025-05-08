@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("error-message").style.color = "limegreen";
                 document.getElementById("error-message").textContent = "Login successful! Redirecting...";
                 window.location.href = "/";
+                
             } else {
                 console.error(data.message);
                 document.getElementById("error-message").textContent = data.message;

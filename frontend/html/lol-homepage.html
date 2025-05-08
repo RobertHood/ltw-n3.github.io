@@ -12,15 +12,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
     <title>League News</title>
+    <script src="/fe-script/homepage.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
-            <a class="nav-bar letter-logo"><img src="../asset/homepage-assets/image.png" style="width: 170px" onclick="window.location.href='../../index.html'"></a>
-            <form class="d-flex ms-3" role="search" onsubmit="handleSearch(event)">
-                <input class="form-control me-2" type="search" placeholder="Search news..." aria-label="Search" id="nav-search-input">
-                <button class="btn btn-outline-light" type="submit"><i class="ri-search-line"></i></button>
-              </form>
+            <a class="nav-bar letter-logo" id="frontpage"><img src="../asset/homepage-assets/image.png" style="width: 170px"></a>
+            <input class="navbar-searchbar" type="search" placeholder="Search news..." aria-label="Search" id="search-bar">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" href="valorant-homepage.html">VALORANT</a>
@@ -30,7 +28,7 @@
             </li>
           </ul>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown no-margin">
+            <!-- <li class="nav-item dropdown no-margin">
               <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://flagsapi.com/GB/flat/64.png" alt="English" width="30" height="30"> English
               </a>
@@ -39,11 +37,16 @@
                 <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/FR/flat/64.png" alt="French" width="20" height="20"> French</a></li>
                 <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/DE/flat/64.png" alt="German" width="20" height="20"> German</a></li>
               </ul>
+            </li> -->
+            <li class="nav-item">
+                <div class="user-info" id="user-info">
+                    <a class="nav-link active" id="user-info-email"></a>
+                </div>
             </li>
             <li class="nav-item">
                 <a href="/html/login.html"><button class="btn btn-outline-danger" id="login-btn">Sign In</button></a>
-                <a href="/html/admin.html"><button class="btn btn-outline-danger" id="admin-btn" >(dev)to admin</button></a>
-                <button class="btn btn-outline-danger" id="logout-btn" >Logout</button>
+                <a href="/html/admin.html"><button class="btn btn-outline-danger" id="admin-btn" style="display:none">(dev)to admin</button></a>
+                <button class="btn btn-outline-danger" id="logout-btn">Logout</button>
             </li>
           </ul>
         </div>

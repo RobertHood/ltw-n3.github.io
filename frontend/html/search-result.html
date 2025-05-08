@@ -7,162 +7,79 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/search-result.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
         rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
-        <title>Search result for nnnnnn</title>
+        <title></title>
+        <script src="/fe-script/search-result.js"></script>
+        <script src="/fe-script/homepage.js"></script>
+        
     </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-black navbar-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #0b0b0b;z-index:1030">
         <div class="container-fluid">
-            <a class="nav-bar letter-logo"><img src="/asset/homepage-assets/image.png" style="width: 170px" onclick="window.location.href='../index.html'"></a>
+            <a class="nav-bar letter-logo" id="frontpage"><img src="../asset/homepage-assets/image.png" style="width: 170px"></a>
+            <input class="navbar-searchbar" type="search" placeholder="Search news..." aria-label="Search" id="search-bar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="lol-homepage.html">League of Legends</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="tft-homepage.html">Teamfight Tactics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="valorant-homepage.html">VALORANT</a>
+            </li>
+          </ul>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown no-margin">
-              <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://flagsapi.com/GB/flat/64.png" alt="English" width="30" height="30"> English
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="language-dropdown">
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/VN/flat/64.png" alt="VietNamese" width="20" height="20"> Vietnamese</a></li>
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/FR/flat/64.png" alt="French" width="20" height="20"> French</a></li>
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/DE/flat/64.png" alt="German" width="20" height="20"> German</a></li>
-              </ul>
+            <li class="nav-item">
+                <div class="user-info" id="user-info">
+                    <a class="nav-link active" id="user-info-email"></a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="/html/login.html"><button class="btn btn-outline-danger" id="login-btn">Sign In</button></a>
+                <a href="/html/admin.html"><button class="btn btn-outline-danger" id="admin-btn" style="display:none">(dev)to admin</button></a>
+                <button class="btn btn-outline-danger" id="logout-btn">Logout</button>
             </li>
           </ul>
         </div>
     </nav>
-    <div class="news-section">
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
-        <div class="news-box">
-            <div class="text-side">
-                <div class="news-header">
-                    <p>T1 vs G2 battled it out in Bangkok</p>
-                </div>
-                <div class="news-time-and-author">
-                    <p>2 hours ago | by BoDork</p>
-                </div>
-                <div class="news-brief-description">
-                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
-                </div>
-            </div>
-            <div class="game-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="72px" height="72px"><path fill="#ff5252" d="M5,10.885v11.761c0,0.878,0.289,1.732,0.823,2.43L17.4,40.215C17.778,40.71,18.365,41,18.988,41 h9.951c0.835,0,1.302-0.963,0.785-1.619L6.785,10.266C6.198,9.521,5,9.936,5,10.885z"/><path fill="#ff5252" d="M27.245,28.389l13.964-18.07C41.792,9.563,43,9.976,43,10.93v12.465c0,0.395-0.117,0.781-0.336,1.109 l-3.07,4.606C39.223,29.666,38.598,30,37.93,30h-9.893C27.206,30,26.737,29.046,27.245,28.389z"/></svg>
-            </div>
-        </div>
+    <div class="bigtext">
+        <h1 id="search-keyword"></h1>
     </div>
-    
+    <!-- <div class="news-section">
+        <div class="news-box" id="news-box"> 
+            <div class="text-side">
+                <div class="news-header">
+                    <p>T1 vs G2 battled it out in Bangkok</p>
+                </div>
+                <div class="news-time-and-author">
+                    <p>2 hours ago | by BoDork</p>
+                </div>
+                <div class="news-brief-description">
+                    <p>In the end, there were only 2, and one of them came out on top after a bloody thrilling battle</p>
+                </div>
+            </div>
+            <div class="game-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" id="katman_1" x="0px" y="0px" viewBox="25 15 45 45" width="72px" height="72px"style="enable-background:new 0 0 96 72;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_1_);}
+                        
+                    </style>
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="34.8739" y1="12.8925" x2="64.828" y2="60.9741" gradientTransform="matrix(1 0 0 -1 0 74)">
+                        <stop offset="4.909790e-02" style="stop-color:#AF893D"/>
+                        <stop offset="0.2178" style="stop-color:#D29D40"/>
+                        <stop offset="0.6393" style="stop-color:#FFCC74"/>
+                        <stop offset="0.8142" style="stop-color:#E8B55D"/>
+                    </linearGradient>
+                    <path class="st0" d="M30.7,40c0.3,0.3,0.9,0.7,1.9,1.3v3.6l12,7l0-1.7c3.6,1.6,6.4,2.6,8.4,2.9l0.1,0L48,56L30.7,45.9V40z M48,16  l17.3,10v15.2c1.7,1.2,3.1,2.7,4.3,4.5c-0.3-0.1-0.9-0.4-1.8-0.8c1.1,2.5,1.3,6.3-2.8,7.2c-9.8,2.3-22.6-4.1-27.4-7.3  c2.5,1,4.8,1.9,7,2.6l0-1.6c-2.3-0.8-6.3-2.4-10.6-5.3c-4-2.7-7.1-6-7.5-6.6c0.7,0.2,1.2,0.3,1.7,0.3c-1.5-2.7,0.1-5.6,2.6-6.7V26  L48,16z M48,18.1L32.6,27v7.2c-0.7-0.6-1.7-2.3-1.9-3.3c-0.7,0.5-0.8,1.5-0.4,2.6c1.8,4.6,9.4,9.5,14.2,12.1l0-12.2h-7.5l-2.6-5.9  h27.2L59,33.5h-7.5l0,15.7c2.2,0.4,4.3,0.7,6.2,0.8c8.3,0.4,8.9-2,7.5-4l-4.8,2.8c-1.3,0.1-2.5,0.1-3.6-0.1l6.6-3.8V27L48,18.1z"/>
+                    </svg>
+                    
+            </div>
+         </div> 
+    </div> -->
 </body>
 </html>

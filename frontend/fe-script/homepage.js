@@ -1,14 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("lol-carousel").addEventListener("click", () => {
-        window.location.href = "/html/lol-homepage.html";
-    });
-    document.getElementById("val-carousel").addEventListener("click", () => {
-        window.location.href = "/html/valorant-homepage.html";
-    });
-    document.getElementById("tft-carousel").addEventListener("click", () => {
-        window.location.href = "/html/tft-homepage.html";
-    }); 
-    
+document.addEventListener("DOMContentLoaded", () => { 
     const token = getCookie("Authorization");
     
     if (token) {
@@ -44,17 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     );
 
-    document.getElementById("search-bar").addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
-        }
-    });
-    document.getElementById("big-search-bar").addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
-        }
-    });
-    
+    document.getElementById("frontpage").addEventListener("click", () => {
+        window.location.href = "/";
+    }
+    );
 });
 
 function getCookie(name) {

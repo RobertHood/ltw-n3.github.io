@@ -12,6 +12,21 @@ body{
     padding-top: 80px;
 }
 
+.navbar-searchbar
+{
+    width: 300px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.navbar-searchbar::placeholder{
+    color: #666;
+    padding-left: 5px;
+}
+.navbar-searchbar:focus{
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}
 .nav-item button{
     border-radius: 40px;
     background-color: red;

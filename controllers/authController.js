@@ -83,19 +83,29 @@ exports.login = async (req, res) => {
             userID: existingUser._id,
             email: existingUser.email,
             verified: existingUser.verified,
+            role: existingUser.role,
         },process.env.TOKEN_SECRET, {
             expiresIn: "7d",
         });
 
-        res.cookie('Authorization', 'Bearer ' + token, {
+        res.cookie('role', existingUser.role, {
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            httpOnly: false, 
+            secure: process.env.NODE_ENV === 'production' ? true : false,
+        });
+        
+        res.cookie('Authorization', 'Bearer ' + token,  {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
             httpOnly: process.env.NODE_ENV === 'production' ? true : false,
             secure: process.env.NODE_ENV === 'production' ? true : false,
-        }).json({
+        });
+    
+        res.json({
             status: "success",
             message: "User logged in successfully",
             token: token
         });
+
         
     }catch(error) {
         console.error(error);

@@ -26,6 +26,6 @@ router.post('/create-post', identifier, postsController.createPost);
 router.put('/update-post', identifier, postsController.updatePost);
 router.delete('/delete-post', identifier, postsController.deletePost);
 
-router.post('/create', upload.single('image'), postsController.createPostWithImage);
+router.post('/create-post-with-image',identifier, upload.single('image'), postsController.createPostWithImage);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",async () => {
     document.getElementById("lol-carousel").addEventListener("click", () => {
         window.location.href = "/html/lol-homepage.html";
     });
@@ -24,19 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("logout-btn").style.display = "none";
         document.getElementById("user-info").style.display = "none";
     }
-    /* xử lý chưa được
-    else if (role == "user") {
-        document.getElementById("login-btn").style.display = "block";
-        document.getElementById("logout-btn").style.display = "none";
-        document.getElementById("user-info").style.display = "none";
-    }
-    else if(role == "admin"){
-        document.getElementById("login-btn").style.display = "block";
-        document.getElementById("logout-btn").style.display = "none";
-        document.getElementById("user-info").style.display = "none";
-        document.getElementById("admin-btn").style.display = "none";
-        
-    }*/
     document.getElementById("logout-btn").addEventListener("click", async () => {
         try {
             const response = await fetch("/api/auth/logout", {
@@ -69,6 +56,96 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     
+    try{
+        const response = await fetch("/api/posts/all-posts", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        const data = await response.json();
+        if (response.ok){
+            const newsSection = document.getElementById("news-section");
+            const smallPostSection = document.createElement("div");
+            smallPostSection.className = "right-news-column";
+            let count = 5;
+            data.data.forEach(post =>{
+                if (count === 5){
+                    const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
+                    const now = new Date();
+                    const category = post.category ? post.category : "General";
+                    const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
+                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const bigbigPostElement = document.createElement("div");
+                    bigbigPostElement.className = "news-1"
+
+                    const bigPostElement = document.createElement("div");
+                    bigPostElement.className = "content-1";
+
+                    const title = document.createElement("h2");
+                    title.className = "news-title";
+                    title.innerHTML = '<a href="../html/news.html">' + post.title;
+                    bigPostElement.appendChild(title);
+                    
+                    const briefDescription = document.createElement("p");
+                    briefDescription.className = "news-1-desc";
+                    briefDescription.innerHTML = post.description;
+                    bigPostElement.appendChild(briefDescription);
+                    
+                    const postStat = document.createElement("p");
+                    postStat.className = "news-category-and-time";
+                    postStat.innerHTML = `${category} | ${timeDiff} hours ago | by ${author}`;
+
+                    const image = document.createElement("img");
+                    image.src = post.image;
+                    bigPostElement.appendChild(postStat);
+                    bigPostElement.appendChild(image);
+                    console.log(bigPostElement);
+                    bigbigPostElement.appendChild(bigPostElement);
+                    console.log(bigbigPostElement);
+                    newsSection.appendChild(bigPostElement);
+                    count--;
+                }else if (count > 0){
+                    const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
+                    const now = new Date();
+                    const category = post.category ? post.category : "General";
+                    const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
+                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+
+                    const smallPost = document.createElement("div");
+                    smallPost.className = "news-2-container";
+
+                    const postText = document.createElement("div");
+                    postText.className = "news-2-context";
+                    
+                    const postTitle = document.createElement("p");
+                    postTitle.className = "news-title";
+                    postTitle.innerHTML = '<a href="../html/news.html">' + post.title;
+                    postText.appendChild(postTitle);
+                    const postDesc = document.createElement("p");
+                    postDesc.className = "news-2-desc";
+                    postDesc.innerHTML = post.description;
+                    postText.appendChild(postDesc);
+                    const postStat = document.createElement("p");
+                    postStat.className = "news-category-and-time";
+                    postStat.innerHTML = `${category} | ${timeDiff} hours ago | by ${author}`;
+                    postText.appendChild(postStat);
+                    const postImage = document.createElement("img");
+                    postImage.src = post.image;
+                    smallPost.appendChild(postText);
+                    smallPost.appendChild(postImage);
+                    smallPostSection.appendChild(smallPost);
+                   
+                    count--;
+                }
+            }); 
+            newsSection.appendChild(smallPostSection);
+        }
+    }catch (error) {
+        console.error(error);
+    }
+
 });
 
 function getCookie(name) {

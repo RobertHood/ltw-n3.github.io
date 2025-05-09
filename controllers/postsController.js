@@ -129,22 +129,39 @@ exports.deletePost = async (req, res) => {
 };
 
 exports.createPostWithImage = async (req, res) => {
-	const { title, description, category} = req.body;
-	const {userID} = req.user
-	const imageUrl = req.file
+	const { title, description, category } = req.body;
+	console.log(req.body);
+	const { userID } = req.user;
+	console.log(req.user);
+	const image = req.file
 	  ? `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`
 	  : null;
-  
-	const newPost = new Post({
-	  title,
-	  category,
-	  description,
-	  userID,
-	  image: imageUrl
-	});
-  
-	await newPost.save();
-	res.status(201).json({ message: 'Post created', post: newPost });
+	try {
+		const { error, value } = createPostSchema.validate({
+			title,
+			description,
+			category,
+			image,
+			userID,
+		});
+		if (error) {
+			console.error(error);
+			return res
+				.status(401)
+				.json({ success: false, message: error.details[0].message, title, description, });
+		}
+
+		const result = await Post.create({
+			title,
+			description,
+			category,
+			image,
+			userID
+		});
+		res.status(201).json({ success: true, message: 'created', data: result });
+	} catch (error) {
+		console.log(error);
+	}
 };
 
 exports.getPostsByUser = async (req, res) => {
@@ -186,7 +203,7 @@ exports.getPostsByUser = async (req, res) => {
 exports.getPostsByTitle = async (req, res) => {
 	const { title } = req.query;
 	try {
-		const result = await Post.find({ title: { $regex: title, $options: 'i' } }).populate({
+		const result = await Post.find({ title: { $regex: title, $options: 'i' } }).sort({createdAt: -1}).populate({
 			path: 'userID',
 			select: 'email',
 		});

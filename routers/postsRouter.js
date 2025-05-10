@@ -20,12 +20,11 @@ router.get('/single-post', postsController.singlePost);
 router.get('/posts-by-user',postsController.getPostsByUser);
 router.get('/posts-by-category', postsController.getPostsByCategory);
 router.get('/posts-by-title', postsController.getPostsByTitle);
-
-router.post('/create-post', identifier, postsController.createPost);
+router.get('/posts-by-subcategory', postsController.getPostsBySubCategory);
 
 router.put('/update-post', identifier, postsController.updatePost);
 router.delete('/delete-post', identifier, postsController.deletePost);
 
-router.post('/create-post-with-image',identifier, upload.single('image'), postsController.createPostWithImage);
+router.post('/create-post',identifier, upload.single('image'), postsController.createPosts);
 
 module.exports = router;

@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded",async () => {
         });
 
         const data = await response.json();
+        console.log(data);
         if (response.ok){
             const newsSection = document.getElementById("news-section");
             const smallPostSection = document.createElement("div");

@@ -11,7 +11,18 @@
 body{
     padding-top: 80px;
 }
+.nav-item button{
+    border-radius: 40px;
+    background-color: red;
+    color:white;
+}
+.nav-item nav-link.active:hover{
+    text-decoration: underline;
+}
 
+.nav-bar.letter-logo img:hover{
+    cursor: pointer;
+}
 .navbar-searchbar
 {
     width: 300px;
@@ -27,19 +38,6 @@ body{
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
 }
-.nav-item button{
-    border-radius: 40px;
-    background-color: red;
-    color:white;
-}
-.nav-item nav-link.active:hover{
-    text-decoration: underline;
-}
-
-.nav-bar.letter-logo img:hover{
-    cursor: pointer;
-}
-
 .league-page-top {
     position: relative; 
     min-height: 40vh; 
@@ -82,6 +80,16 @@ body h5{
     font-weight: bold;
 }
 
+.all-news{
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+}
+
+.news-form .tournament-realm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .news-form h2{
     font-weight: bold;
     display: block;
@@ -105,21 +113,12 @@ body h5{
     gap: 20px;
     padding-left: 60px;
     padding-right: 60px;
-    padding-bottom: 30px  
 }
 
 .news-box-equal-row img{
     width: 100%;
-    height: 70%;
+    height: 65%;
     border-radius: 5px;
-}
-
-.news-box-featured-news{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 20px;
-    max-width: 1000px;
-    padding-left: 60px;
 }
 
 .news-uptime{
@@ -142,13 +141,11 @@ body h5{
 }
 
 .news-box-featured-news {
-    display: grid;
-    grid-template-columns: 2fr 1fr; 
-    gap: 20px;
     max-width: 100%;
     align-items: start;
-    padding-right: 60px;
-    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 30px;
+    
 }
 
 .featured-news {
@@ -159,8 +156,7 @@ body h5{
     background-image: url(../asset/league-assets/first-stand-pic.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    object-fit:cover;
-    object-position: center;
+    object-fit: contain;
     color: white;
     font-size: 18px;
     border-radius: 5px;
@@ -168,38 +164,28 @@ body h5{
 
 .featured-news .featured-content
 {   
-    
     position: relative;
-    
     text-align: left;
     width: 100%;
     padding-left: 30px;
 }
 
-.news-row .right{
+.news-row-right{
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%; 
+    gap: 10px;
 }
 
-.news-row .left{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    width: 100%;  
-}
 
 .news-box {
     display: flex;
     flex-direction: row;
     background: transparent;
     border-radius: 5px;
-    padding-bottom: 10px;
+    gap: 20px;
     align-items: center;
-    gap: 10px;
     flex: 1 1 auto; 
     min-width: 435px;
 }

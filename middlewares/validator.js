@@ -83,9 +83,11 @@ exports.acceptFPCodeSchema = Joi.object({
 });
 
 exports.createPostSchema = Joi.object({
-	title: Joi.string().min(3).max(60).required(),
-	description: Joi.string().min(3).max(600).required(),
+	title: Joi.string().min(3).required(),
+	description: Joi.string().min(3).required(),
     category: Joi.string().min(3).required(),
+    subcategory: Joi.string().min(3).required(),
+    content: Joi.string().min(3).required(),
     image: Joi.string().optional(),
 	userID: Joi.string().required(),
 });

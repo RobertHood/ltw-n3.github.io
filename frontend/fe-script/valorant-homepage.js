@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
     //newest news
+    document.getElementById("search-bar").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
+        }
+    });
+
     try{
         const response = await fetch("http://localhost:8000/api/posts/posts-by-category?category=VALORANT", {
             method: "GET",

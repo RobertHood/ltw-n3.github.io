@@ -3,7 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     caret-color: transparent;
     box-sizing: border-box;
 }
@@ -522,6 +522,7 @@ img{
 
 .item1 {
   grid-column: span 2;
+
 }
 
 .item2 {
@@ -531,6 +532,7 @@ img{
 .item3 {
   grid-column: 2 / span 2;
 }
+
 
 .item img {
   width: 100%;
@@ -545,9 +547,11 @@ img{
     overflow: hidden;
     border-radius: 10px;
 }
+
 .item:hover{
     cursor:pointer;
 }
+
 
 .overlay {
   position: absolute;

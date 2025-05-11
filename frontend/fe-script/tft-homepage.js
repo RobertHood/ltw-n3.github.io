@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
 
     try{
-        const response = await fetch("http://localhost:8000/api/posts/posts-by-category?category=VALORANT", {
+        const response = await fetch("http://localhost:8000/api/posts/posts-by-category?category=Teamfight%20Tactics", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     featured_content.appendChild(news_uptime);
 
                     const news_link = document.createElement("a");
-                    news_link.href = "#";
+                    news_link.href = `../html/news.html?_id=${post._id}`;
                     
                     const news_title = document.createElement("h5");
                     news_title.textContent = post.title;
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     text_section.appendChild(news_uptime)
 
                     const news_link = document.createElement("a");
-                    news_link.href = "#";
+                    news_link.href = `../html/news.html?_id=${post._id}`;
 
                     const news_title = document.createElement("h5");
                     news_title.textContent = post.title;
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     //tournament news
     try{
-        const response = await fetch("http://localhost:8000/api/posts/posts-by-subcategory?subcategory=Tournament%20News", {
+        const response = await fetch("http://localhost:8000/api/posts/posts-by-subcategory?subcategory=Tournament%20News&category=Teamfight%20Tactics", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     news_section_box_1.appendChild(postStat);
 
                     const news_link = document.createElement("a");
-                    news_link.href = "#";
+                    news_link.href = `../html/news.html?_id=${post._id}`;
                     
                     const news_title = document.createElement("h5");
                     news_title.textContent = post.title;
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //tournament news
     try{
-        const response = await fetch("http://localhost:8000/api/posts/posts-by-subcategory?subcategory=Game%20Updates", {
+        const response = await fetch("http://localhost:8000/api/posts/posts-by-subcategory?subcategory=Game%20Updates&category=Teamfight%20Tactics", {
             method: "GET",
             headers: {
                 "Content-Type" : "application/json"
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     news_section_box_1.appendChild(postStat);
 
                     const news_link = document.createElement("a");
-                    news_link.href = "#";
+                    news_link.href = `../html/news.html?_id=${post._id}`;
                     
                     const news_title = document.createElement("h5");
                     news_title.textContent = post.title;

@@ -160,9 +160,9 @@ exports.getPostsByCategory = async (req, res) => {
 }
 
 exports.getPostsBySubCategory = async (req, res) =>{
-	const {subcategory} = req.query;
+	const {category, subcategory} = req.query;
 	try{
-		const result = await Post.find({ subcategory }).sort({createdAt: -1}).populate({
+		const result = await Post.find({ subcategory, category }).sort({createdAt: -1}).populate({
 			path: 'userID',
 			select: 'email',
 		});

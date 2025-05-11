@@ -5,6 +5,11 @@
     
 }
 
+a{
+    text-decoration: none !important;
+    color: inherit;
+}
+
 .navbar-searchbar
 {
     width: 300px;
@@ -22,6 +27,7 @@
 }
 
 .news-section{
+    text-decoration: none;
     display:grid;
     grid-template-rows: repeat(auto-fit, 1fr);
     justify-content: center;
@@ -34,6 +40,7 @@
 }
 
 .news-box{
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     background-color: #5b6167;

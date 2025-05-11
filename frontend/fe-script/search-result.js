@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = await response.json();
         if (response.ok) {
             document.getElementById("search-keyword").textContent = `Search result for "${searchQuery}"`;
-            console.log("this is running");
-            console.log(data);
             const newsSection = document.createElement("div");
             newsSection.className = "news-section";
             data.data.forEach(post => {
@@ -33,7 +31,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
                 
                 const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
-            
+                
+                const toNewsPage = document.createElement("a");
+                toNewsPage.href = `../html/news.html?_id=${post._id}`;
+
                 const postElement = document.createElement("div");
                 postElement.className = "news-box";
             
@@ -76,8 +77,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             
                 postElement.appendChild(textSide);
                 postElement.appendChild(game_icon);
-                console.log("postElement is this: " + postElement);
-                newsSection.appendChild(postElement);
+                toNewsPage.appendChild(postElement);
+                newsSection.appendChild(toNewsPage);
             });
             document.body.appendChild(newsSection);
         } else {

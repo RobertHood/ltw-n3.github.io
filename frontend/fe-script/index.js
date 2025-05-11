@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded",async () => {
 
                     const title = document.createElement("h2");
                     title.className = "news-title";
-                    title.innerHTML = '<a href="../html/news.html">' + post.title;
+                    title.innerHTML = `<a href="../html/news.html?_id=${post._id}">` + post.title;
                     bigPostElement.appendChild(title);
                     
                     const briefDescription = document.createElement("p");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                     
                     const postTitle = document.createElement("p");
                     postTitle.className = "news-title";
-                    postTitle.innerHTML = '<a href="../html/news.html">' + post.title;
+                    postTitle.innerHTML = `<a href="../html/news.html?_id=${post._id}">` + post.title;
                     postText.appendChild(postTitle);
                     const postDesc = document.createElement("p");
                     postDesc.className = "news-2-desc";

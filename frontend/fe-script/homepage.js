@@ -38,6 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/";
     }
     );
+
+    document.getElementById("search-bar").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
+        }
+    });
 });
 
 function getCookie(name) {

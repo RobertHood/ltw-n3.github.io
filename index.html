@@ -10,6 +10,7 @@
     href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
     rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/asset/homepage-assets/page-favicon.png" type="image/x-icon">
     <title>Rito.gg</title>
     <script src="/fe-script/index.js"></script>
@@ -34,16 +35,6 @@
             
           </ul>
           <ul class="navbar-nav">
-            <!-- <li class="nav-item dropdown no-margin">
-              <a class="nav-link dropdown-toggle" href="#" id="language-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/asset/homepage-assets/england.webp" alt="English" width="30" height="30"> English
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="language-dropdown">
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/VN/flat/64.png" alt="VietNamese" width="20" height="20"> Vietnamese</a></li>
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/FR/flat/64.png" alt="French" width="20" height="20"> French</a></li>
-                <li><a class="dropdown-item" href="#"><img src="https://flagsapi.com/DE/flat/64.png" alt="German" width="20" height="20"> German</a></li>
-              </ul>
-            </li> -->
             <li class="nav-item">
               <div class="user-info" id="user-info">
                 <a class="nav-link active" id="user-info-email"></a>
@@ -108,66 +99,13 @@
         <div class="sc-1-healine">
           <h1>What's happening today?</h1>
         </div>
-        <div class="news-sc-1">
-          <div class="news-1">
-            <div class="author">
-              <img src="/asset/homepage-assets\dinhvanbeo.jpg">
-              <div class="author-in4">
-                <p class="author-name">Đinh Văn Béo</p>
-                <p>Author</p>
-              </div>
-            </div>
-            <div class="content-1">
-              <h2 class="news-title"><a href="../html/news.html">T1 vs G2. Absolute cinema. Enough said</a></h2>
-              <p class="news-category-and-time">VALORANT | 6 minutes read</p>
-              <img src="/asset/homepage-assets/meteor-t1vsg2.png" alt="">
-            </div>
-          </div>
-          <div class="news-2">
-            <div class="news-2-container">
-              <div class="news-2-context">
-                <p class="news-title"><a href="/html/news.html">LEC Winter Split 2025 crowns its champion</a></p>
-                <p class="news-2-desc">G2 and KC fights for first seed going into First Stand. However, Europe witnessed a murder as the battle was not even close.</p>
-                <p class="news-category-and-time">LOL | 10 minutes read</p>
-              </div>
-              <img src="/asset/homepage-assets/g2kc03.png" alt="">
-            </div>
-            <div class="news-2">
-              <div class="news-2-container">
-                <div class="news-2-context">
-                  <p class="news-title"><a href="/html/news.html">Is k3soju washed?</a></p>
-                  <p class="news-2-desc">The TFT community once again ask the big fat question of the year as our favorite TFT influencer did not make it to Tactician's Cup for the second time this year.</p>
-                  <p class="news-category-and-time">TFT | 10 minutes read</p>
-                </div>
-                <img src="/asset/homepage-assets/k3soju.webp" alt="">
-              </div>
-            </div>
-            <div class="news-2">
-              <div class="news-2-container">
-                <div class="news-2-context">
-                  <p class="news-title"><a href="/html/news.html">League of Legends is getting kinda boring in 2025?</a></p>
-                  <p class="news-2-desc">Many of League community are finding that the game is cooked and Riot are being called out to really look into fixing it</p>
-                  <p class="news-category-and-time">LOL | 10 minutes read</p>
-                </div>
-                <img src="/asset/homepage-assets/amidisabled.png" alt="">
-              </div>
-            </div>
-            <div class="news-2">
-              <div class="news-2-container">
-                <div class="news-2-context">
-                  <p class="news-title"><a href="/html/news.html">Paper Rex signs PatMen</a></p>
-                  <p class="news-2-desc">Paper Rex has announced the signing of former NAOS player Patrick "PatMen" Mendoza. The signing is the organization's first roster move involving a player since Monyet left in May of 2024.</p>
-                  <p class="news-category-and-time">VALORANT | 10 minutes read</p>
-                </div>
-                <img src="/asset/homepage-assets/patmen.webp" alt="">
-              </div>
-            </div>
-          </div>
+        <div class="news-sc-1" id="news-section">
+          
         </div>
         <div class="carousel-headline">
           <h1>Or maybe you're more interested in the news of...</h1>
         </div>        
-        <div id="newsCarousel" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="3000">
+        <!-- <div id="newsCarousel" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="3000">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="/asset/homepage-assets/lol1.webp" class="d-block w-100" alt="Ảnh 1" id="lol-carousel">
@@ -177,6 +115,28 @@
             </div>
             <div class="carousel-item">
               <img src="/asset/homepage-assets/tft1.png" class="d-block w-100" alt="Ảnh 3" id="tft-carousel">
+            </div>
+          </div>
+        </div> -->
+        <div class="grid-container">
+
+          <div class="item item1" id="lol-carousel">
+            <img src="/asset/homepage-assets/lol1.webp" alt="LOL">
+            <div class="overlay">
+              <span class="overlay-text">League Of Legends</span>
+            </div>
+          </div>
+          <div class="item item2" id="val-carousel">
+            <img src="/asset/homepage-assets/val1.jpg" alt="Valorant">
+            <div class="overlay">
+              <span class="overlay-text">VALORANT</span>
+            </div>
+          </div>
+          <div class="item item3" id="tft-carousel">
+            <img src="/asset/homepage-assets/tft1.png" alt="TFT">
+            <div class="overlay">
+              <span class="overlay-text">Teamfight Tactics</span>
+
             </div>
           </div>
         </div>

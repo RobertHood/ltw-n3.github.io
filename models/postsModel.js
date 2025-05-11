@@ -1,3 +1,4 @@
+const { required } = require('joi');
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
@@ -16,11 +17,25 @@ const postSchema = mongoose.Schema({
             message: "{VALUE} is not a valid category",
         },
     },
+    subcategory: {
+        type: String,
+        required: [true, "Subcategory is required"],
+        trim: true,
+        enum: {
+            values: ["Tournament News", "Game Updates"],
+            message: "{VALUE} is not a valid subcategory, it can only be 'Tournament News' or 'Game Updates'"
+        }
+    },
     description: {
         type: String,
         required: [true, "Description is required"],
         trim: true,
         minlength: [20, "Description must be at least 20 characters"],
+    },
+    content: {
+        type: String,
+        required: [true, "Content is required"],
+        trim: true,
     },
     image: {
         type: String, 

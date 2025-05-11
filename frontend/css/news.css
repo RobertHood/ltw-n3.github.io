@@ -28,7 +28,11 @@ body{
     background-color: #1D1D1D !important; 
 }
 
-
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 img{
     vertical-align: middle;
 }

@@ -251,6 +251,13 @@ img{
     margin: 20px 70px;
 }
 
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
 .sc-1-healine h1{
     padding: 10px;
 }

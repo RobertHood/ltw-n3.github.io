@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("login-btn").style.display = "block";
                 document.getElementById("logout-btn").style.display = "none";
                 document.getElementById("user-info").style.display = "none";
+                document.getElementById("admin-btn").style.display = "none";
             } else {
                 console.error("Logout failed.");
             }
@@ -44,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
         }
     });
+    const role = getCookie("role");
+    if (role === "admin"){
+        document.getElementById("admin-btn").style.display = "block";
+    }
+    else {
+        document.getElementById("admin-btn").style.display ="none";
+    }
 });
 
 function getCookie(name) {

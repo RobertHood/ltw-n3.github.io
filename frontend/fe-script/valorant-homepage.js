@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             window.location.href = "/html/search-result.html?query=" + encodeURIComponent(event.target.value);
         }
     });
-
+    
     try{
         const response = await fetch("http://localhost:8000/api/posts/posts-by-category?category=VALORANT", {
             method: "GET",

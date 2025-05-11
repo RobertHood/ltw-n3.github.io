@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async ()=> {
         const post = data.data;
         const bodyContainer = document.getElementById("body-container");
         if(response.ok){
+            document.title = post.title;
             const createdAt = new Date(post.createdAt);
             const readableDate = createdAt.toLocaleString("en-US", {
                 year: "numeric",

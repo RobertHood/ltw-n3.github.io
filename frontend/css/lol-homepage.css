@@ -9,6 +9,8 @@
     box-sizing: border-box;
 }
 body{
+    background: linear-gradient(to right, #101a1e, #1c2b30);
+    color: white;
     padding-top: 80px;
 }
 .nav-item button{
@@ -18,6 +20,22 @@ body{
 }
 .nav-item nav-link.active:hover{
     text-decoration: underline;
+}
+a h5 {
+    text-decoration: none; 
+    color: white; 
+    display: inline-block;
+}
+
+a:hover h5 { 
+    color: white; 
+    text-decoration: underline;
+}
+
+h5 {
+    text-decoration:none;
+    margin: 0; 
+    font-size: inherit; 
 }
 
 .nav-bar.letter-logo img:hover{
@@ -138,6 +156,7 @@ body h5{
 .game-updates{
     background: linear-gradient(to right, #101a1e, #1c2b30);
     color: white;
+    margin-bottom: 100px;
 }
 
 .news-box-featured-news {
@@ -262,4 +281,8 @@ footer{
     color: #aaa;
 }
 
-
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

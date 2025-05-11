@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     const token = getCookie("Authorization");
     const role = getCookie("role");
     
+    
     if (token) {
         document.getElementById("login-btn").style.display = "none";
         document.getElementById("logout-btn").style.display = "block";
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded",async () => {
         document.getElementById("logout-btn").style.display = "none";
         document.getElementById("user-info").style.display = "none";
     }
+    console.log(role);
     if (role === "admin"){
         document.getElementById("admin-btn").style.display = "block";
     }
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                 document.getElementById("login-btn").style.display = "block";
                 document.getElementById("logout-btn").style.display = "none";
                 document.getElementById("user-info").style.display = "none";
+                document.getElementById("admin-btn").style.display = "none";
             } else {
                 console.error("Logout failed.");
             }

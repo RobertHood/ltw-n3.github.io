@@ -8,7 +8,13 @@
     box-sizing: border-box;
     color: white;
 }
-
+a{
+    text-decoration: none !important;
+    color: white;
+}
+a:hover{
+    text-decoration: underline ;
+}
 body, html{
     overflow-x: hidden;
 }
@@ -41,14 +47,8 @@ img{
     background-color: #40474F;
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 800px 1fr;
-    grid-template-rows: auto 1fr;
-}
-
-.news{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: 2fr 1fr;
+    /* grid-template-rows: 1.8fr 1fr; */
 }
 
 .news{
@@ -94,7 +94,7 @@ img{
     text-decoration: none;
 }
 
-.author{
+.news-stat{
     padding-left: 20px;
     display: flex;
     justify-content: flex-start;

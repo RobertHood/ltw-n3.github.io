@@ -4,6 +4,15 @@
     font-family: Roboto, sans-serif;
     
 }
+
+#search-keyword{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
 body {
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Dark teal gradient */
     

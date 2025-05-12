@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async ()=> {
                 minute: "2-digit",
             }); 
 
-            const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+            const author = post.userID?.username ? post.userID.username : "Unknown";
 
             const news = document.createElement("div");
             news.className = "news"

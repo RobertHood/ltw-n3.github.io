@@ -212,8 +212,15 @@ main{
     border-collapse: collapse;
 }
 
+.media-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .news-table th,
-.news-table td {
+.news-table td,
+.media-table th,
+.media-table td {
     padding: 12px;
     text-align: center;
     border: 1px solid #ddd;

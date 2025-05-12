@@ -389,3 +389,4 @@ exports.deleteUser = async (req, res) => {
 		console.log(error);
 	}
 };
+

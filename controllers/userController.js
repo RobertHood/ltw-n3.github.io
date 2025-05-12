@@ -40,4 +40,27 @@ exports.getUserByRole = async (req, res) => {
     }
 }
 
-exports
+exports.getUserProfile = async(req, res) =>{
+    const { userID } = req.user;
+    try{
+        const existingUser = await User.findOne({userID});
+        if (!existingUser) {
+			return res
+				.status(404)
+				.json({ success: false, message: 'No user found' });
+		}
+        const createdAt = existingUser.createdAt.toLocaleDateString('vi-VN', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+        });
+
+        const verified = existingUser.verified;
+        const username = existingUser.username;
+
+        res.json({ createdAt, verified, username });
+    } catch (err) {
+        console.error('Lỗi khi lấy hồ sơ người dùng:', err);
+        res.status(500).json({ error: 'Lỗi máy chủ' });
+    }
+};

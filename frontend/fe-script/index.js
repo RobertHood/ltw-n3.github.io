@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     document.getElementById("tft-carousel").addEventListener("click", () => {
         window.location.href = "/html/tft-homepage.html";
     }); 
-    
+
     const token = getCookie("Authorization");
     const role = getCookie("role");
     
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     else {
         document.getElementById("login-btn").style.display = "block";
         document.getElementById("logout-btn").style.display = "none";
-        document.getElementById("user-info").style.display = "none";
+        document.getElementById("user-info-email").style.display = "none";
     }
     console.log(role);
     if (role === "admin"){
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded",async () => {
     else {
         document.getElementById("admin-btn").style.display ="none";
     }
+
+    document.getElementById("user-info-email").addEventListener("click", () =>{
+       window.location.href = "/html/profile.html"; 
+    });
+    
     document.getElementById("logout-btn").addEventListener("click", async () => {
         try {
             const response = await fetch("/api/auth/logout", {

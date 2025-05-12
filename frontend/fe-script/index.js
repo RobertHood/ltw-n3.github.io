@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded",async () => {
     const token = getCookie("Authorization");
     const role = getCookie("role");
     
-    
     if (token) {
         document.getElementById("login-btn").style.display = "none";
         document.getElementById("logout-btn").style.display = "block";
@@ -91,7 +90,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                     const now = new Date();
                     const category = post.category ? post.category : "General";
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
                     const bigbigPostElement = document.createElement("div");
                     bigbigPostElement.className = "news-1"
 
@@ -126,7 +125,7 @@ document.addEventListener("DOMContentLoaded",async () => {
                     const now = new Date();
                     const category = post.category ? post.category : "General";
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
 
                     const smallPost = document.createElement("div");
                     smallPost.className = "news-2-container";

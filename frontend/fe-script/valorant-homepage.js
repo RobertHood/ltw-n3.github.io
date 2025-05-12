@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
                     const now = new Date();
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
 
                     const featured_news = document.createElement("div");
                     featured_news.className = "featured_news";
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
                     const now = new Date();
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
 
                     const news_box = document.createElement("div");
                     news_box.className = "news-box";
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
                     const now = new Date();
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
 
 
                     const news_section_box_1 = document.
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const createdAt = post.createdAt ? new Date(post.createdAt) : new Date();
                     const now = new Date();
                     const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
-                    const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                    const author = post.userID?.username ? post.userID.username : "Unknown";
 
 
                     const news_section_box_1 = document.

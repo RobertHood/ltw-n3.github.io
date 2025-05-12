@@ -22,7 +22,7 @@ router.get('/posts-by-category', postsController.getPostsByCategory);
 router.get('/posts-by-title', postsController.getPostsByTitle);
 router.get('/posts-by-subcategory', postsController.getPostsBySubCategory);
 
-router.put('/update-post', identifier, postsController.updatePost);
+router.put('/update-post', identifier,upload.single('image'), postsController.updatePost);
 router.delete('/delete-post', identifier, postsController.deletePost);
 
 router.post('/create-post',identifier, upload.single('image'), postsController.createPosts);

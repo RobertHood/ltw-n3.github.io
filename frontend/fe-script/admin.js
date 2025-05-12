@@ -1,5 +1,11 @@
 const navToggle = document.getElementById("nav-toggle");
 const logoImg = document.getElementById("logo-img");
+const token = getCookie("Authorization");
+const userInfo = JSON.parse(atob(token.split('.')[1]));
+if (token){
+    document.getElementById("user-info-username").innerHTML = userInfo.username;
+    document.getElementById("user-info-email").innerHTML = userInfo.email;
+}
 
 navToggle.addEventListener("change", function () {
   if (this.checked) {
@@ -15,7 +21,6 @@ const mainContent = document.getElementById('change-content');
 // Gán link tĩnh tương ứng cho từng mục
 const pageMap = {
   'News Management': '../adminpgs/newsm.html',
-  'Media Library': '../adminpgs/media.html', 
   'User Management': '../adminpgs/user.html',
   'Chat Management': '../adminpgs/chat.html',
   'Analytics': '../adminpgs/analytics.html',
@@ -153,3 +158,9 @@ window.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}

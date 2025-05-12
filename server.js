@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'frontend')));
-
+app.use('/libs', express.static(path.join(__dirname, 'frontend/libs')));
 // Cho phép truy cập ảnh trực tiếp
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

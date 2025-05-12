@@ -13,7 +13,7 @@
     <link rel="icon" href="asset/page-favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="../fe-script/admin.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../libs/chart.min.js"></script>
     
     <title>Document</title>
 </head>
@@ -21,15 +21,12 @@
     <input type="checkbox" id="nav-toggle"> 
     <div class="side-bar">
         <div class="sidebar-logo">
-            <a class="nav-bar letter-logo"><img id="logo-img" src="../asset\homepage-assets\image.png" style="width: 170px"></a>
+            <a class="nav-bar letter-logo" href="/"><img id="logo-img" src="../asset\homepage-assets\image.png" style="width: 170px"></a>
         </div>
         <div class="sidebar-menu">
             <ul>
                 <li>
                     <a href="" class="sidebar-item active"><i class="ri-dashboard-2-fill"></i><span>News Management</span></a>
-                </li>
-                <li>
-                    <a href="" class="sidebar-item"><i class="ri-image-ai-fill" ></i><span>Media Library</span></a>
                 </li>
                 <li>
                     <a href="" class="sidebar-item"><i class="ri-group-fill" ></i><span>User Management</span></a>
@@ -60,10 +57,9 @@
                 <input type="search" placeholder="Search here..."> 
             </div>
             <div class="user-box">
-                <img src="../asset\homepage-assets\dinhvanbeo.jpg" width="45px" height="45px" alt="">
                 <div>
-                    <h4>Lil Kimmy</h4>
-                    <small>4:3 ADMIN</small>
+                    <h5 id="user-info-username"></h5>
+                    <small id="user-info-email"></small>
                 </div>
             </div>
         </header>
@@ -118,5 +114,6 @@
     </div>
     
     <script id="tab-script" src="../fe-script/newsm.js"></script>
+    <script id="tab-script" src="../fe-script/media.js"></script>
 </body>
 </html>

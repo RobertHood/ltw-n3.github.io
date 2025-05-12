@@ -13,12 +13,47 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     
     try {
-        const response = await fetch("/api/posts/posts-by-title?title=" + encodeURIComponent(searchQuery || ""), {
+        let response = null;
+        if (!searchQuery){
+            response = await fetch("/api/posts/posts-by-title?title=" + encodeURIComponent(searchQuery || ""), {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         });
+        }
+        else if(
+        "TFT".toLowerCase().includes(searchQuery.toLowerCase())
+        ){
+        response = await fetch("/api/posts/posts-by-category?category=TFT", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        }else if("League of Legends".toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === "lol"){
+        response = await fetch("/api/posts/posts-by-category?category=League of Legends", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        }else if("VALORANT".toLowerCase().includes(searchQuery.toLowerCase())){
+        response = await fetch("/api/posts/posts-by-category?category=VALORANT", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        }
+        else{
+            response = await fetch("/api/posts/posts-by-title?title=" + encodeURIComponent(searchQuery || ""), {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        }
         const data = await response.json();
         if (response.ok) {
             document.getElementById("search-keyword").textContent = `Search result for "${searchQuery}"`;

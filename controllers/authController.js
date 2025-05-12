@@ -92,25 +92,25 @@ exports.login = async (req, res) => {
 
         res.cookie('verified', existingUser.verified, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: false, 
+            httpOnly: process.env.NODE_ENV === 'production' ? true : false, 
             secure: process.env.NODE_ENV === 'production' ? true : false,
         });
         
         res.cookie('username', existingUser.username, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: false, 
+            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
             secure: process.env.NODE_ENV === 'production' ? true : false,
         });
 
         res.cookie('createdAt', existingUser.createdAt, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: false, 
+            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
             secure: process.env.NODE_ENV === 'production' ? true : false,
         });
 
         res.cookie('role', existingUser.role, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: false, 
+            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
             secure: process.env.NODE_ENV === 'production' ? true : false,
         });
         
@@ -137,6 +137,15 @@ exports.logout = async (req, res) => {
         httpOnly: process.env.NODE_ENV === 'production' ? true : false,
         secure: process.env.NODE_ENV === 'production' ? true : false,
     }).clearCookie('role',{
+        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+    }).clearCookie('createdAt',{
+        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+    }).clearCookie('verified',{
+        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+    }).clearCookie('username',{
         httpOnly: process.env.NODE_ENV === 'production' ? true : false,
         secure: process.env.NODE_ENV === 'production' ? true : false,
     }).json({

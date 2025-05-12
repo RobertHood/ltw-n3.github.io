@@ -1,5 +1,11 @@
 const navToggle = document.getElementById("nav-toggle");
 const logoImg = document.getElementById("logo-img");
+const token = getCookie("Authorization");
+const userInfo = JSON.parse(atob(token.split('.')[1]));
+if (token){
+    document.getElementById("user-info-username").innerHTML = userInfo.username;
+    document.getElementById("user-info-email").innerHTML = userInfo.email;
+}
 
 navToggle.addEventListener("change", function () {
   if (this.checked) {
@@ -153,3 +159,9 @@ window.addEventListener('DOMContentLoaded', () => {
             });
     }
 });
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}

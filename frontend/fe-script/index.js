@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded",async () => {
     const token = getCookie("Authorization");
     const role = getCookie("role");
     
-    
     if (token) {
         document.getElementById("login-btn").style.display = "none";
         document.getElementById("logout-btn").style.display = "block";

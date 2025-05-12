@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const now = new Date();
                 const timeDiff = Math.floor((now - createdAt) / (1000 * 60 * 60));
                 
-                const author = post.userID?.email ? post.userID.email.split("@")[0] : "Unknown";
+                const author = post.userID?.username ? post.userID.username : "Unknown";
                 
                 const toNewsPage = document.createElement("a");
                 toNewsPage.href = `../html/news.html?_id=${post._id}`;

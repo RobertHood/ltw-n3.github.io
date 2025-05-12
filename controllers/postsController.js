@@ -4,7 +4,6 @@ const Post = require('../models/postsModel');
 exports.getPosts = async (req, res) => {
 	const { page } = req.query;
 	const postsPerPage = 10000000000000000000;
-
 	try {
 		let pageNum = 0;
 		if (page <= 1) {
@@ -18,7 +17,7 @@ exports.getPosts = async (req, res) => {
 			.limit(postsPerPage)
 			.populate({
 				path: 'userID',
-				select: 'email',
+				select: 'email username',
 			});
 		res.status(200).json({ success: true, message: 'posts', data: result });
 	} catch (error) {
@@ -32,7 +31,7 @@ exports.singlePost = async (req, res) => {
 	try {
 		const existingPost = await Post.findOne({ _id }).populate({
 			path: 'userID',
-			select: 'email',
+			select: 'email username',
 		});
 		if (!existingPost) {
 			return res
@@ -49,15 +48,24 @@ exports.singlePost = async (req, res) => {
 
 exports.updatePost = async (req, res) => {
 	const { _id } = req.query;
-	const { title, description } = req.body;
+	console.log(req.query);
+	const {title, description, category, subcategory, content} = req.body;
+	console.log(req.body);
+	const image = req.file
+        ? `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`
+        : null;
+	
 	const { userID } = req.user;
 	try {
 		const { error, value } = createPostSchema.validate({
 			title,
 			description,
+			category,
+			subcategory,
+			content,
 			userID,
+			image,
 		});
-		console.log(_id,title, description, userID);
 		if (error) {
 			return res
 				.status(401)
@@ -74,6 +82,12 @@ exports.updatePost = async (req, res) => {
 		}
 		existingPost.title = title;
 		existingPost.description = description;
+		existingPost.category = category;
+		existingPost.subcategory = subcategory;
+		existingPost.content = content;
+		if (image){
+			existingPost.image = image;
+		}
 
 		const result = await existingPost.save();
 		res.status(200).json({ success: true, message: 'Updated', data: result });
@@ -147,7 +161,7 @@ exports.getPostsByCategory = async (req, res) => {
 	try {
 		const result = await Post.find({ category }).sort({createdAt: -1}).populate({
 			path: 'userID',
-			select: 'email',
+			select: 'email username',
 		});
 		if (!result) {
 			return res.status(404).json({ success: false, message: 'No posts' });
@@ -164,7 +178,7 @@ exports.getPostsBySubCategory = async (req, res) =>{
 	try{
 		const result = await Post.find({ subcategory, category }).sort({createdAt: -1}).populate({
 			path: 'userID',
-			select: 'email',
+			select: 'email username',
 		});
 		if (!result) {
 			return res.status(404).json({ success: false, message: 'No posts' });
@@ -181,7 +195,7 @@ exports.getPostsByUser = async (req, res) => {
 	try {
 		const result = await Post.find({ userID }).populate({
 			path: 'userID',
-			select: 'email',
+			select: 'email username',
 		});
 		if (!result || result.length === 0) {
 			return res.status(404).json({ success: false, message: 'No posts' });
@@ -198,7 +212,7 @@ exports.getPostsByTitle = async (req, res) => {
 	try {
 		const result = await Post.find({ title: { $regex: title, $options: 'i' } }).sort({createdAt: -1}).populate({
 			path: 'userID',
-			select: 'email',
+			select: 'email username',
 		});
 		if (!result) {
 			return res.status(404).json({ success: false, message: 'No posts' });

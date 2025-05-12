@@ -1,13 +1,12 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    const mediaTableBody = document.getElementById('media-table-body');
-
+// document.addEventListener('DOMContentLoaded', async () => {
     async function fetchMedia() {
         try {
-            const response = await fetch('/api/media'); 
+            const mediaTableBody = document.getElementById('media-table-body');
+            const response = await fetch('/api/media/'); 
             if (!response.ok) throw new Error('Failed to fetch media data');
             const mediaList = await response.json();
-            mediaTableBody.innerHTML = '';
-
+            // mediaTableBody.innerHTML = "";
+            console.log(mediaList);
             mediaList.forEach(media => {
                 const row = document.createElement('tr');
                 const urlCell = document.createElement('td');
@@ -46,4 +45,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
     fetchMedia();
-});
+// });

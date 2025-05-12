@@ -153,8 +153,29 @@
             document.querySelectorAll(".delete-btn").forEach(button => {
                 button.addEventListener("click", (event) => {
                     const newsId = event.target.getAttribute("data-id");
+                    document.getElementById("news-popup-delete").classList.remove("hidden");
+                    document.getElementById("confirm-delete").addEventListener("click", async () =>{
                     console.log(newsId);
+                    const response = await fetch('/api/posts/delete-post?_id=' + newsId, {
+                        method: "DELETE",
+                        headers: {
+                        "Content-Type" :"application/json" 
+                        }
+                    });
+                    const data = await response.json();
+                    console.log(data);
+
+                    if(response.ok){
+                        location.reload();
+                    }else{
+                        console.log(error);
+                    }
+                });
                 })
             });
+
+            document.getElementById("close-popup-delete").addEventListener("click", () => {
+                document.getElementById("news-popup-delete").classList.add("hidden");
+            });          
         }).catch(error => console.error("Lỗi tải dữ liệu:", error));
 

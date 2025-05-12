@@ -58,8 +58,19 @@ navItems.forEach(item => {
             document.body.appendChild(script);
 
             console.log('newsm.js script loaded and executed.');
-          }else if (text === 'Media Library'){
-            
+          }else if (text === 'User Management'){
+            const existingScript = document.getElementById('tab-script');
+            if (existingScript) {
+              existingScript.remove();
+            }
+
+            const script = document.createElement('script');
+            script.id = 'tab-script';
+            script.src = '../fe-script/usersm.js';
+            script.defer = true; // Ensure the script runs after parsing
+            document.body.appendChild(script);
+
+            console.log('newsm.js script loaded and executed.');
           }
         });
     }

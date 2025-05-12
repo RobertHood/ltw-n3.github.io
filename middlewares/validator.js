@@ -91,3 +91,16 @@ exports.createPostSchema = Joi.object({
     image: Joi.string().optional(),
 	userID: Joi.string().required(),
 });
+
+exports.validateUserSchema = Joi.object({
+    username: Joi.string().min(3),
+    email: Joi.string().min(10).email({
+        minDomainSegments: 2,
+        tlds: { allow: ['com', 'net', 'org'] },
+    }).required().messages({
+        'string.empty': 'Email is required',
+        'string.email': 'Email must be a valid email address',
+    }),
+    role: Joi.string().valid('admin', 'user').optional(), // Add role validation
+    verified: Joi.boolean().optional(), // Add verified validation
+});

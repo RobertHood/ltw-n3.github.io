@@ -84,8 +84,28 @@ exports.login = async (req, res) => {
             email: existingUser.email,
             verified: existingUser.verified,
             role: existingUser.role,
+            createdAt: existingUser.createdAt,
+            username: existingUser.username,
         },process.env.TOKEN_SECRET, {
             expiresIn: "7d",
+        });
+
+        res.cookie('verified', existingUser.verified, {
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            httpOnly: false, 
+            secure: process.env.NODE_ENV === 'production' ? true : false,
+        });
+        
+        res.cookie('username', existingUser.username, {
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            httpOnly: false, 
+            secure: process.env.NODE_ENV === 'production' ? true : false,
+        });
+
+        res.cookie('createdAt', existingUser.createdAt, {
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            httpOnly: false, 
+            secure: process.env.NODE_ENV === 'production' ? true : false,
         });
 
         res.cookie('role', existingUser.role, {

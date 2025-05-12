@@ -21,7 +21,6 @@ const mainContent = document.getElementById('change-content');
 // Gán link tĩnh tương ứng cho từng mục
 const pageMap = {
   'News Management': '../adminpgs/newsm.html',
-  'Media Library': '../adminpgs/media.html', 
   'User Management': '../adminpgs/user.html',
   'Chat Management': '../adminpgs/chat.html',
   'Analytics': '../adminpgs/analytics.html',

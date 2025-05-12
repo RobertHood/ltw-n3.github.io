@@ -90,11 +90,6 @@ exports.login = async (req, res) => {
             expiresIn: "7d",
         });
 
-        res.cookie('verified', existingUser.verified, {
-            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: process.env.NODE_ENV === 'production' ? true : false, 
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-        });
         
         res.cookie('username', existingUser.username, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
@@ -140,9 +135,6 @@ exports.logout = async (req, res) => {
         httpOnly: process.env.NODE_ENV === 'production' ? true : false,
         secure: process.env.NODE_ENV === 'production' ? true : false,
     }).clearCookie('createdAt',{
-        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-        secure: process.env.NODE_ENV === 'production' ? true : false,
-    }).clearCookie('verified',{
         httpOnly: process.env.NODE_ENV === 'production' ? true : false,
         secure: process.env.NODE_ENV === 'production' ? true : false,
     }).clearCookie('username',{
@@ -253,7 +245,7 @@ exports.verifyVerificationCode = async (req, res) => {
 			await existingUser.save();
 			return res
 				.status(200)
-				.json({ success: true, message: 'your account has been verified!' });
+				.json({ success: true, message: 'your account has been verified!'});   
 		}
 		return res
 			.status(400)

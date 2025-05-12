@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     document.getElementById("tft-carousel").addEventListener("click", () => {
         window.location.href = "/html/tft-homepage.html";
     }); 
-
+    
     const token = getCookie("Authorization");
     const role = getCookie("role");
     

@@ -33,16 +33,28 @@ navItems.forEach(item => {
     // Lấy text trong sidebar
     const text = item.querySelector('span').innerText.trim();
     const page = pageMap[text];
-
+    let count = 1;
     if (page) {
       fetch(page)
         .then(res => res.text())
         .then(html => {
           mainContent.innerHTML = html;
-
-          // Nếu là trang News thì vẽ biểu đồ
+          
           if (text === 'News Management') {
-            renderNewsChart();
+            const existingScript = document.getElementById('tab-script');
+            if (existingScript) {
+              existingScript.remove();
+            }
+
+            const script = document.createElement('script');
+            script.id = 'tab-script';
+            script.src = '../fe-script/newsm.js';
+            script.defer = true; // Ensure the script runs after parsing
+            document.body.appendChild(script);
+
+            console.log('newsm.js script loaded and executed.');
+          }else if (text === 'Media Library'){
+            
           }
         });
     }

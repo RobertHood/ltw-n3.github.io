@@ -3,7 +3,7 @@ const Post = require('../models/postsModel');
 
 exports.getPosts = async (req, res) => {
 	const { page } = req.query;
-	const postsPerPage = 10;
+	const postsPerPage = 10000000000000000000;
 
 	try {
 		let pageNum = 0;

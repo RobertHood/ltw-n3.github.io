@@ -751,3 +751,7 @@ footer{
         height: auto;
     }
 }
+
+#user-info-email {
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 const { validateUserSchema } = require('../middlewares/validator.js');
 const User = require('../models/usersModel.js');
+const jwt = require("jsonwebtoken");
 
 exports.getAllUsers = async (req, res) => {
     try {

@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded",async () => {
     else{
         document.getElementById("login-btn").style.display = "block";
         document.getElementById("logout-btn").style.display = "none";
-        document.getElementById("user-info").style.display = "none";
+        document.getElementById("user-info-email").style.display = "none";
     }
     document.getElementById("logout-btn").addEventListener("click", async () => {
         try {

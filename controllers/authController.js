@@ -9,10 +9,9 @@ const transport = require("../middlewares/sendMail");
 
 
 exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
     try {
         const {error, value} = registerSchema.validate({
-            username,
             email,
             password
         });
@@ -35,7 +34,6 @@ exports.register = async (req, res) => {
         const hashedPassword = await doHash(password,12);
 
         const newUser = new User({
-            username,
             email,
             password: hashedPassword,
         });
@@ -83,45 +81,19 @@ exports.login = async (req, res) => {
             userID: existingUser._id,
             email: existingUser.email,
             verified: existingUser.verified,
-            role: existingUser.role,
-            createdAt: existingUser.createdAt,
-            username: existingUser.username,
         },process.env.TOKEN_SECRET, {
             expiresIn: "7d",
         });
 
-        
-        res.cookie('username', existingUser.username, {
-            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-        });
-
-        res.cookie('createdAt', existingUser.createdAt, {
-            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-        });
-
-        res.cookie('role', existingUser.role, {
-            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-            httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-            secure: process.env.NODE_ENV === 'production' ? true : false,
-        });
-        
-        res.cookie('Authorization', 'Bearer ' + token,  {
+        res.cookie('Authorization', 'Bearer ' + token, {
             expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
             httpOnly: process.env.NODE_ENV === 'production' ? true : false,
             secure: process.env.NODE_ENV === 'production' ? true : false,
-        });
-    
-        res.json({
-            status: "success",
-            message: "User logged in successfully",
+        }).json({
             token: token
         });
-
         
+        // res.redirect('/');
     }catch(error) {
         console.error(error);
     }
@@ -129,15 +101,6 @@ exports.login = async (req, res) => {
 
 exports.logout = async (req, res) => {
     res.clearCookie('Authorization', {
-        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-        secure: process.env.NODE_ENV === 'production' ? true : false,
-    }).clearCookie('role',{
-        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-        secure: process.env.NODE_ENV === 'production' ? true : false,
-    }).clearCookie('createdAt',{
-        httpOnly: process.env.NODE_ENV === 'production' ? true : false,
-        secure: process.env.NODE_ENV === 'production' ? true : false,
-    }).clearCookie('username',{
         httpOnly: process.env.NODE_ENV === 'production' ? true : false,
         secure: process.env.NODE_ENV === 'production' ? true : false,
     }).json({
@@ -245,7 +208,7 @@ exports.verifyVerificationCode = async (req, res) => {
 			await existingUser.save();
 			return res
 				.status(200)
-				.json({ success: true, message: 'your account has been verified!'});   
+				.json({ success: true, message: 'your account has been verified!' });
 		}
 		return res
 			.status(400)
@@ -410,4 +373,3 @@ exports.deleteUser = async (req, res) => {
 		console.log(error);
 	}
 };
-

@@ -37,6 +37,13 @@ const postSchema = mongoose.Schema({
         required: [true, "Content is required"],
         trim: true,
     },
+    status: {
+        type: String,
+        enum: {
+            values: ["uploaded", "edited", "deleted"],
+            message: "{VALUE} is not a valid status",
+        },
+    },
     image: {
         type: String, 
         required: false, 

@@ -1,8 +1,10 @@
+const postsModel = require("../models/postsModel");
+
 const getNewsStats = async (req, res) => {
     try {
-      const newsUploaded = await NewsModel.countDocuments({ status: 'uploaded' });
-      const newsEdited = await NewsModel.countDocuments({ status: 'edited' });
-      const newsDeleted = await NewsModel.countDocuments({ status: 'deleted' });
+      const newsUploaded = await postsModel.countDocuments();
+      const newsEdited = await postsModel.countDocuments();
+      const newsDeleted = await postsModel.countDocuments();
   
       res.json({
         newsUploaded,

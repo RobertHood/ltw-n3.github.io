@@ -45,15 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Fetch dữ liệu từ API
     fetch('/api/analytics/news-stats')
-      .then(response => response.json())
-      .then(data => {
-        // Cập nhật dữ liệu biểu đồ
-        myChart.data.datasets[0].data = [
-          data.newsUploaded,
-          data.newsEdited,
-          data.newsDeleted
-        ];
-        myChart.update(); // Cập nhật biểu đồ
-      })
-      .catch(error => console.error('Error fetching data:', error));
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // Kiểm tra dữ liệu từ API
+          
+          // Cập nhật dữ liệu vào biểu đồ
+          myChart.data.datasets[0].data = [
+            data.newsUploaded,
+            data.newsEdited,
+            data.newsDeleted
+          ];
+
+          // Cập nhật biểu đồ
+          myChart.update();
+        })
+        .catch(error => console.error('Error fetching news stats:', error));
 });
